@@ -1,0 +1,42 @@
+2020-05-15 14:48:39,158 - __main__ - ERROR - This is an error
+2020-05-15 14:48:39,164 - __main__ - ERROR - Chaky raised an error
+2020-05-15 14:48:39,169 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-70-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-05-15 16:13:46,219 - __main__ - ERROR - This is an error
+2020-05-15 16:13:46,221 - __main__ - ERROR - Chaky raised an error
+2020-05-15 16:13:46,223 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-44-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-05-15 16:14:30,628 - __main__ - ERROR - This is an error
+2020-05-15 16:14:30,630 - __main__ - ERROR - Chaky raised an error
+2020-05-15 16:14:30,634 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-44-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-05-17 17:09:29,384 - __main__ - ERROR - This is an error
+2020-05-17 17:09:29,386 - __main__ - ERROR - Chaky raised an error
+2020-05-17 17:09:29,389 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-44-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-05-18 15:43:07,429 - __main__ - ERROR - This is an error
+2020-05-18 15:43:07,434 - __main__ - ERROR - Chaky raised an error
+2020-05-18 15:43:07,440 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-44-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-05-18 15:47:34,783 - __main__ - ERROR - This is an error
+2020-05-18 15:47:34,787 - __main__ - ERROR - Chaky raised an error
+2020-05-18 15:47:34,792 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-46-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
