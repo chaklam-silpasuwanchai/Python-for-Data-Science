@@ -47,3 +47,10 @@ Traceback (most recent call last):
   File "<ipython-input-45-61a38891412c>", line 41, in <module>
     c = a / b
 ZeroDivisionError: division by zero
+2020-05-24 19:39:16,611 - __main__ - ERROR - This is an error
+2020-05-24 19:39:16,613 - __main__ - ERROR - Chaky raised an error
+2020-05-24 19:39:16,616 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-45-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
