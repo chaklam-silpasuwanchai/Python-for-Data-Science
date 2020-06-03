@@ -75,3 +75,31 @@ Traceback (most recent call last):
   File "<ipython-input-45-61a38891412c>", line 41, in <module>
     c = a / b
 ZeroDivisionError: division by zero
+2020-06-03 11:57:03,310 - __main__ - ERROR - This is an error
+2020-06-03 11:57:03,313 - __main__ - ERROR - Chaky raised an error
+2020-06-03 11:57:03,315 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-45-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-06-03 14:00:13,471 - __main__ - ERROR - This is an error
+2020-06-03 14:00:13,473 - __main__ - ERROR - Chaky raised an error
+2020-06-03 14:00:13,474 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-45-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-06-03 14:00:43,819 - __main__ - ERROR - This is an error
+2020-06-03 14:00:43,821 - __main__ - ERROR - Chaky raised an error
+2020-06-03 14:00:43,822 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-45-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
+2020-06-03 14:09:19,044 - __main__ - ERROR - This is an error
+2020-06-03 14:09:19,046 - __main__ - ERROR - Chaky raised an error
+2020-06-03 14:09:19,047 - __main__ - ERROR - Exception occured
+Traceback (most recent call last):
+  File "<ipython-input-45-61a38891412c>", line 41, in <module>
+    c = a / b
+ZeroDivisionError: division by zero
