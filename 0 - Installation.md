@@ -135,7 +135,7 @@ $ source pythonDSAI/bin/activate
 numpy         1.18.4 
 (pythonDSAI) $ deactivate
 $ pip3 list | grep numpy
-
+$
 ```
 ## <a name="h2-windows"></a>2. For Windows user
 ## <a name="h2-macos"></a>3. For MacOS user
