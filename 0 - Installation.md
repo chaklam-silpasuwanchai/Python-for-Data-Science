@@ -83,7 +83,7 @@ $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 ### Installer from python.org
 1. Navigate to [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version for Windows.
 2. 
-
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install.png)
 
 
 
@@ -181,7 +181,7 @@ $ pip3 install jupyter
 
 2. If you get the following message.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-PATH.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-path.png)
 
 You have to add `PATH` of the executable scripts.
 
