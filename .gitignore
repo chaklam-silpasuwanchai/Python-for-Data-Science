@@ -51,6 +51,7 @@ coverage.xml
 docs/_build/
 
 # VScode
-.vscode
+/.vscode
 # Jupytor
-.ipynb_checkpoints
+/.ipynb_checkpoints
+/0 - Installation.md

@@ -1,11 +1,13 @@
 # Table of Content
 
-0. [What and why?](#h1-whatNwhy)
-1. [Python Installation](#h1-installation)
-    1. [Ubuntu](#h2-ubuntu)
-    2. [Windows](#h2-windows)
-    3. [MacOS](#h2-macos)
-# <a name="h1-whatNwhy"></a>0. What and Why
+0. [What and why?](#0-whatNwhy)
+1. [Python Installation](#1-installation)
+    1. [Ubuntu](#1-1-ubuntu)
+    2. [Windows](#1-2-windows)
+    3. [MacOS](#1-3-macos)
+2. [Virtual Environment](#2-virtualEnvironment)
+3. [Jupyter](#3-jupyter)
+# <a name="0-whatNwhy"></a>0. What and Why
 ### What is Python? 
 [quote](https://www.w3schools.com/python/python_intro.asp)
 
@@ -30,18 +32,12 @@ It is used for:
 1. There are two major versions of Python which are Python2 and Python3. Note that when you call `python` in your terminal, you are referring to Python2. Instead, you need to explicit version 3 to call to Python3 (`python3`).
 2. There are different syntax between the two versions. We are recommended that you use version 3 throughout the course.
 
-# <a name="h1-installation"></a>1. Python Installation
-## <a name="h2-ubuntu"></a>1. For Ubuntu user
+# <a name="1-installation"></a>1. Python Installation
+## <a name="1-1-ubuntu"></a>1. For Ubuntu user
 
 [Reference](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-20-04-server)
 
-- [A. Install via `apt`](#h2-1-a)
-- [B. Virtual Environment](#h2-1-b)
-- [C. Virtual Environment in action](#h2-1-c)
-- [D. Jupyter](#h2-1-d)
-
-
-### <a name="h2-1-a"></a> A. Install via `apt`
+### Install via `apt`
 1. Open your terminal
 2. Update and Upgrade your current packages.
 ```
@@ -82,7 +78,21 @@ Successfully installed numpy-1.18.4
 $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 ```
 
-### <a name="h2-1-b"></a> B. Virtual Environment
+## <a name="1-2-windows"></a>2. For Windows user
+
+### Installer from python.org
+1. Navigate to [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version for Windows.
+2. 
+
+
+
+
+## <a name="1-3-macos"></a>3. For MacOS user
+
+
+
+
+# <a name="1-virtualEnvironment"></a>2. Virtual Environment
 *For beginners, you can ignore this part but we recommend you to try it out for good practice.*
 
 > Virtual Environment is used to manage Python packages for different projects. Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects. --- [python.org](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#:~:text=virtualenv%20is%20used%20to%20manage,system%20tools%20or%20other%20projects.)
@@ -115,7 +125,8 @@ $ source pythonDSAI/bin/activate
 (pythonDSAI) deactivate
 $ 
 ```
-### <a name="h2-1-c"></a> C. Virtual Environment in action
+## Virtual Environment in action
+
 We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
 1. Check that `numpy` is installed.
 ```
@@ -156,7 +167,7 @@ $
 (pythonDSAI) $ pip3 install pandas_datareader
 (pythonDSAI) $ pip3 install sklearn
 ```
-### <a name="h2-1-d"></a> D. Jupyter
+### <a name="1-2-1-d"></a> D. Jupyter
 [Reference](https://jupyter.org/install)
 
 You will need a text editor to write a code. While there are many great python editors out there, we will use Jupyter for this course to simplify the process of checking your works. 
@@ -202,28 +213,4 @@ $
 
 5. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)  
-
-## <a name="h2-windows"></a>2. For Windows user
-
-- [A. Install via `apt`](#h2-2-a)
-- [B. Virtual Environment](#h2-2-b)
-- [C. Virtual Environment in action](#h2-2-c)
-- [D. Jupyter](#h2-2-d)
-
-### <a name="h2-2-a"></a> A. Install via `apt`
-### <a name="h2-2-b"></a> B. Virtual Environment
-### <a name="h2-2-c"></a> C. Virtual Environment in action
-### <a name="h2-2-d"></a> D. Jupyter
-
-## <a name="h2-macos"></a>3. For MacOS user
-
-- [A. Install via `apt`](#h2-3-a)
-- [B. Virtual Environment](#h2-3-b)
-- [C. Virtual Environment in action](#h2-3-c)
-- [D. Jupyter](#h2-3-d)
-
-### <a name="h2-3-a"></a> A. Install via `apt`
-### <a name="h2-3-b"></a> B. Virtual Environment
-### <a name="h2-3-c"></a> C. Virtual Environment in action
-### <a name="h2-3-d"></a> D. Jupyter
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)
