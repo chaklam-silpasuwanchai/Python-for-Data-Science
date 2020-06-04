@@ -193,7 +193,8 @@ Activate pythonDSAI environment and add the environment into jupyter
 
 ```
 $ source pythonDSAI/bin/activate
-(pythonDSAI) $ ipython kernel install --name pythonDSAI --user
+(pythonDSAI) $ pip3 install ipykernel
+(pythonDSAI) $ python3 -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
 Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/kernels/pythondsai
 (pythonDSAI) $ deactivate
 $
@@ -202,9 +203,6 @@ $
 5. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)  
-
-6. 
-
 
 ## <a name="h2-windows"></a>2. For Windows user
 ## <a name="h2-macos"></a>3. For MacOS user
