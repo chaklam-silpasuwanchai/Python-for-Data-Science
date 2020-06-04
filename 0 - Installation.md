@@ -79,7 +79,7 @@ Successfully installed numpy-1.18.4
 
 8. Install development tools.
 ```
-sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
+$ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 ```
 
 ### <a name="h2-1-b"></a> B. Virtual Environment
@@ -147,14 +147,14 @@ $
 
 5. Here are the list of library you may need for the next four lectures.
 ```
-(pythonDSAI) pip3 install numpy
-(pythonDSAI) pip3 install torch
-(pythonDSAI) pip3 install torchvision
-(pythonDSAI) pip3 install matplotlib
-(pythonDSAI) pip3 install pandas
-(pythonDSAI) pip3 install seaborn
-(pythonDSAI) pip3 install pandas_datareader
-(pythonDSAI) pip3 install sklearn
+(pythonDSAI) $ pip3 install numpy
+(pythonDSAI) $ pip3 install torch
+(pythonDSAI) $ pip3 install torchvision
+(pythonDSAI) $ pip3 install matplotlib
+(pythonDSAI) $ pip3 install pandas
+(pythonDSAI) $ pip3 install seaborn
+(pythonDSAI) $ pip3 install pandas_datareader
+(pythonDSAI) $ pip3 install sklearn
 ```
 ### <a name="h2-1-d"></a> D. Jupytor
 [Reference](https://jupyter.org/install)
@@ -165,12 +165,23 @@ You can install Jupytor using `pip3` in our global python.
 
 1. Install Jupytor via `pip3`
 ```
-pip3 install jupyterlab
+$ pip3 install jupyter
 ```
 
-2. To start jupytor simply type the following command. Your current folder will be the workspace.
+2. If you get the following message.
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupytor-PATH.png)
+
+You have to add `PATH` of the executable scripts.
+
 ```
-jupyter notebook
+$ echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
+$ source ~/.bashrc
+```
+
+3. To start jupytor simply type the following command. Your current folder will be the workspace.
+```
+$ jupyter notebook
 ```
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupytor-home.png)
 3. 
