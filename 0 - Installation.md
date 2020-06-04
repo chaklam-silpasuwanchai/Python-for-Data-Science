@@ -32,9 +32,16 @@ It is used for:
 
 # <a name="h1-installation"></a>1. Python Installation
 ## <a name="h2-ubuntu"></a>1. For Ubuntu user
+
 [Reference](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-20-04-server)
 
-### Install via `apt`
+- [A. Install via `apt`](#h2-1-a)
+- [B. Virtual Environment](#h2-1-b)
+- [C. Virtual Environment in action](#h2-1-c)
+- [D. Jupytor](#h2-1-d)
+
+
+### <a name="h2-1-a"></a> A. Install via `apt`
 1. Open your terminal
 2. Update and Upgrade your current packages.
 ```
@@ -75,7 +82,7 @@ Successfully installed numpy-1.18.4
 sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 ```
 
-### Virtual Environment
+### <a name="h2-1-b"></a> B. Virtual Environment
 *For beginners, you can ignore this part but we recommend you to try it out for good practice.*
 
 > Virtual Environment is used to manage Python packages for different projects. Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects. --- [python.org](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#:~:text=virtualenv%20is%20used%20to%20manage,system%20tools%20or%20other%20projects.)
@@ -108,7 +115,7 @@ $ source pythonDSAI/bin/activate
 (pythonDSAI) deactivate
 $ 
 ```
-### Virtual Environment in action
+### <a name="h2-1-c"></a> C. Virtual Environment in action
 We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
 1. Check that `numpy` is installed.
 ```
@@ -137,14 +144,37 @@ numpy         1.18.4
 $ pip3 list | grep numpy
 $
 ```
+
+5. Here are the list of library you may need for the next four lectures.
+```
+(pythonDSAI) pip3 install numpy
+(pythonDSAI) pip3 install torch
+(pythonDSAI) pip3 install torchvision
+(pythonDSAI) pip3 install matplotlib
+(pythonDSAI) pip3 install pandas
+(pythonDSAI) pip3 install seaborn
+(pythonDSAI) pip3 install pandas_datareader
+(pythonDSAI) pip3 install sklearn
+```
+### <a name="h2-1-d"></a> D. Jupytor
+[Reference](https://jupyter.org/install)
+
+You will need a text editor to write a code. While there are many great python editors out there, we will use Jupytor for this course to simplify the process of checking your works. 
+
+You can install Jupytor using `pip3` in our global python.
+
+1. Install Jupytor via `pip3`
+```
+pip3 install jupyterlab
+```
+
+2. To start jupytor simply type the following command. Your current folder will be the workspace.
+```
+jupyter notebook
+```
+![alt](https://link)
+3. 
+
+
 ## <a name="h2-windows"></a>2. For Windows user
 ## <a name="h2-macos"></a>3. For MacOS user
-
-pip3 install numpy
-pip3 install torch
-pip3 install torchvision
-pip3 install matplotlib
-pip3 install pandas
-pip3 install seaborn
-pip3 install pandas_datareader
-pip3 install sklearn
