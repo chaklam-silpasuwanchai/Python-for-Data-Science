@@ -172,7 +172,7 @@ pip3 install jupyterlab
 ```
 jupyter notebook
 ```
-![alt](https://link)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupytor-home.png)
 3. 
 
 
