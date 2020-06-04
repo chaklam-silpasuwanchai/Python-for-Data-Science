@@ -9,6 +9,7 @@
     1. [Ubuntu](#2-1-ubuntu)
     2. [Windows](#2-2-windows)
     3. [MacOS](#2-3-macos)
+    4. [Virtual Environment in action](#2-4-action)
 3. [Jupyter](#3-jupyter)
 # <a name="0-whatNwhy"></a>0. What and Why
 ### What is Python? 
@@ -84,9 +85,12 @@ $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 ## <a name="1-2-windows"></a>2. For Windows user
 
 ### Installer from python.org
-1. Navigate to [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version for Windows.
+1. Download 64-bit installer [link](https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe). You need 64-bit version so that you can run PyTorch.
+
 2. Check `Add Python 3.8 to PATH` option and `Install Now`.
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install.png)
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install-64.png)
+
 3. Veryify that `python` is installed with `pip` using your `cmd`
 ```
 C:>python -V
@@ -187,28 +191,72 @@ C:>
 ================================================================================
 
 
-### Virtual Environment in action
+## <a name="2-3-action"></a> Virtual Environment in action
 
 We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
 1. Check that `numpy` is installed.
+
+#### Ubuntu
 ```
 $ pip3 list | grep numpy
 numpy         1.18.4 
 ``` 
 *`pip3 list` is a command for listing all the installed packages. `grep` is a command that filters out the text and shows the line that has `numpy` in it. The vertical bar `|` is commonly referred to as a "pipe". It is used to pipe one command into another. That is, it directs the output from the first command into the input for the second command.*
 
+
+#### Windows
+```
+C:>pip list | find /I "numpy"
+numpy              1.18.4
+``` 
+*`pip list` is a command for listing all the installed packages. `find /I` is a command that filters out the text and shows the line that has `numpy` in it. The vertical bar `|` is commonly referred to as a "pipe". It is used to pipe one command into another. That is, it directs the output from the first command into the input for the second command.*
+
+
+#### MacOS
+```
+<Insert Code Here>
+```
+
+
 2. remove `numpy` from global
+
+#### Ubuntu
 ```
 $ pip3 uninstall numpy
 ```
 
+#### Windows
+```
+$ pip uninstall numpy
+```
+
+#### MacOS
+```
+<Insert Code Here>
+```
+
 3. Activate your target environment.
+
+#### Ubuntu
 ```
 $ source pythonDSAI/bin/activate
 (pythonDSAI) $
 ```
 
+#### Windows
+```
+C:>pythonDSAI\Scripts\activate
+(pythonDSAI) C:>
+```
+
+#### MacOS
+```
+<Insert Code Here>
+```
+
 4. Install and verify the `numpy` package only exist in the target environment.
+
+#### Ubuntu
 ```
 (pythonDSAI) $ pip3 install numpy
 (pythonDSAI) $ pip3 list | grep numpy
@@ -218,31 +266,44 @@ $ pip3 list | grep numpy
 $
 ```
 
+#### Windows
+```
+(pythonDSAI) C:>pip install numpy
+(pythonDSAI) C:>pip list | find /I "numpy"
+numpy      1.18.4
+(pythonDSAI) C:>deactivate
+C:>pip list | find /I "numpy"
+C:>
+```
+
+#### MacOS
+```
+<Insert Code Here>
+```
+
 5. Here are the list of library you may need for the next four lectures.
+``` 
+numpy torch torchvision matplotlib pandas seaborn pandas_datareader sklearn
 ```
-(pythonDSAI) $ pip3 install numpy
-(pythonDSAI) $ pip3 install torch
-(pythonDSAI) $ pip3 install torchvision
-(pythonDSAI) $ pip3 install matplotlib
-(pythonDSAI) $ pip3 install pandas
-(pythonDSAI) $ pip3 install seaborn
-(pythonDSAI) $ pip3 install pandas_datareader
-(pythonDSAI) $ pip3 install sklearn
+For Ubuntu and Windows user, you will need to install PyTorch using below command
 ```
-### <a name="1-2-1-d"></a> D. Jupyter
+pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+```
+
+# <a name="3-jupyter"></a> 3. Jupyter
 [Reference](https://jupyter.org/install)
 
 You will need a text editor to write a code. While there are many great python editors out there, we will use Jupyter for this course to simplify the process of checking your works. 
 
-You can install Jupyter using `pip3` in our global python.
+You can install Jupyter using `pip3` (Ubuntu) and `pip` (Windows) in our global python.
 
-1. Install Jupyter via `pip3`
+1. Install Jupyter via `pip`
+
+#### Ubuntu
 ```
 $ pip3 install jupyter
 ```
-
-2. If you get the following message.
-
+If you receive the following message.
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-path.png)
 
 You have to add `PATH` of the executable scripts.
@@ -251,14 +312,23 @@ You have to add `PATH` of the executable scripts.
 $ echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
 $ source ~/.bashrc
 ```
-
-3. To start jupyter simply type the following command. Your current folder will be the workspace.
+#### Windows
 ```
-$ jupyter notebook
+C:> pip install jupyter
+```
+#### MacOS
+```
+<Install Command here>
+```
+
+
+2. To start jupyter simply type the following command. Your current folder will be the workspace.
+```
+jupyter notebook
 ```
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-home.png)
 
-4. Notice that when you try to create a new file there is a `python3` option. This option will run the code using the global environment. Therefore, you will need to add pythonDSAI into the jupyter before we can use it.
+3. Notice that when you try to create a new file there is a `python3` option. This option will run the code using the global environment. Therefore, you will need to add pythonDSAI into the jupyter before we can use it.
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new.png)  
 
@@ -273,6 +343,15 @@ Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/ke
 $
 ```
 
-5. Restart the jupyter notebook and you should have `pythonDSAI` environment.
+```
+C:>pythonDSAI\Scripts\activate
+(pythonDSAI) C:> pip install ipykernel
+(pythonDSAI) C:> python -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
+Installed kernelspec pythonDSAI in C:\Users\<username>\AppData\Roaming\jupyter\kernels\pythondsai
+(pythonDSAI) C:>deactivate
+C:>
+```
+
+4. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)
