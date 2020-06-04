@@ -6,6 +6,9 @@
     2. [Windows](#1-2-windows)
     3. [MacOS](#1-3-macos)
 2. [Virtual Environment](#2-virtualEnvironment)
+    1. [Ubuntu](#2-1-ubuntu)
+    2. [Windows](#2-2-windows)
+    3. [MacOS](#2-3-macos)
 3. [Jupyter](#3-jupyter)
 # <a name="0-whatNwhy"></a>0. What and Why
 ### What is Python? 
@@ -82,13 +85,28 @@ $ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
 
 ### Installer from python.org
 1. Navigate to [https://www.python.org/downloads/](https://www.python.org/downloads/) and download the latest version for Windows.
-2. 
+2. Check `Add Python 3.8 to PATH` option and `Install Now`.
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install.png)
+3. Veryify that `python` is installed with `pip` using your `cmd`
+```
+C:>python -V
+Python 3.8.3
 
-
+C:>pip -V
+pip 20.1.1 from c:\users\<username>\appdata\local\programs\python\python38-32\lib\site-packages\pip (python 3.8)
+```
+4. Let's try to install your first package `numpy`
+```
+C:>pip install numpy
+Collecting numpy
+  Downloading https://files.pythonhosted.org/packages/8a/52/daf6f4b7fd1499c153cb25ff84f87421598d95e5bb5b760585d2c0263773/numpy-1.18.5-cp38-cp38-win32.whl (10.8MB)
+     |████████████████████████████████| 10.8MB 6.4MB/s
+Installing collected packages: numpy
+Successfully installed numpy-1.18.5
+```
 
 ## <a name="1-3-macos"></a>3. For MacOS user
-
+=====================================================================
 
 
 
@@ -101,6 +119,7 @@ Remember that a package that we download using `pip3` is written by a human. The
 
 To overcome this problem (and many more reasons to do the following), we will set up a Virtual Environment.
 
+## <a name="2-1-ubuntu"></a> 1. For Ubuntu User
 
 1. Our environment manager of choice is `venv`
 ```
@@ -122,10 +141,53 @@ $ source pythonDSAI/bin/activate
 ```
 5. To exit the environment, simply type `deactivate` from anywhere.
 ```
-(pythonDSAI) deactivate
+(pythonDSAI) $ deactivate
 $ 
 ```
-## Virtual Environment in action
+
+## <a name="2-2-windows"></a> 2. For Windows User
+
+1. Download `virtualenv` via `pip install`
+```
+C:>pip install virtualenv
+```
+2. I will set up my first environment for this course names pythonDSAI.
+```
+C:>python -m virtualenv pythonDSAI
+```
+3. It should create a directory that names after the environment name.
+```
+C:>dir pythonDSAI
+ Volume in drive C has no label.
+ Volume Serial Number is 569F-FEDC
+
+ Directory of C:\Users\<username>\pythonDSAI
+
+06/04/2020  11:41 AM    <DIR>          .
+06/04/2020  11:41 AM    <DIR>          ..
+06/04/2020  11:41 AM                42 .gitignore
+06/04/2020  11:41 AM    <DIR>          Lib
+06/04/2020  11:41 AM               429 pyvenv.cfg
+06/04/2020  11:41 AM    <DIR>          Scripts
+               2 File(s)            471 bytes
+               4 Dir(s)  42,885,738,496 bytes free
+```
+4. To activate the environment, you have to call the `activate` file under your newly created environment folder. 
+```
+C:>pythonDSAI\Scripts\activate
+(pythonDSAI) C:>
+```
+5. To exit the environment, simply type `deactivate` from anywhere.
+```
+(pythonDSAI) C:>deactivate
+C:>
+```
+
+## <a name="2-3-macos"></a> 2. For MacOS User
+================================================================================
+
+
+### Virtual Environment in action
 
 We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
 1. Check that `numpy` is installed.
