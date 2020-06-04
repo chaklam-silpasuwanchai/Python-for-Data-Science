@@ -347,8 +347,8 @@ $
 #### Windows
 ```
 C:>pythonDSAI\Scripts\activate
-(pythonDSAI) C:> pip install ipykernel
-(pythonDSAI) C:> python -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
+(pythonDSAI) C:>pip install ipykernel
+(pythonDSAI) C:>python -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
 Installed kernelspec pythonDSAI in C:\Users\<username>\AppData\Roaming\jupyter\kernels\pythondsai
 (pythonDSAI) C:>deactivate
 C:>
