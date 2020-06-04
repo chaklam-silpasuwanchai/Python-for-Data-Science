@@ -334,6 +334,7 @@ jupyter notebook
 
 Activate pythonDSAI environment and add the environment into jupyter
 
+#### Ubuntu
 ```
 $ source pythonDSAI/bin/activate
 (pythonDSAI) $ pip3 install ipykernel
@@ -343,6 +344,7 @@ Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/ke
 $
 ```
 
+#### Windows
 ```
 C:>pythonDSAI\Scripts\activate
 (pythonDSAI) C:> pip install ipykernel
@@ -351,6 +353,12 @@ Installed kernelspec pythonDSAI in C:\Users\<username>\AppData\Roaming\jupyter\k
 (pythonDSAI) C:>deactivate
 C:>
 ```
+
+#### MacOS
+```
+<Install Command here>
+```
+
 
 4. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
