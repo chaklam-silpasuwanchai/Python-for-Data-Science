@@ -38,7 +38,7 @@ It is used for:
 - [A. Install via `apt`](#h2-1-a)
 - [B. Virtual Environment](#h2-1-b)
 - [C. Virtual Environment in action](#h2-1-c)
-- [D. Jupytor](#h2-1-d)
+- [D. Jupyter](#h2-1-d)
 
 
 ### <a name="h2-1-a"></a> A. Install via `apt`
@@ -156,21 +156,21 @@ $
 (pythonDSAI) $ pip3 install pandas_datareader
 (pythonDSAI) $ pip3 install sklearn
 ```
-### <a name="h2-1-d"></a> D. Jupytor
+### <a name="h2-1-d"></a> D. Jupyter
 [Reference](https://jupyter.org/install)
 
-You will need a text editor to write a code. While there are many great python editors out there, we will use Jupytor for this course to simplify the process of checking your works. 
+You will need a text editor to write a code. While there are many great python editors out there, we will use Jupyter for this course to simplify the process of checking your works. 
 
-You can install Jupytor using `pip3` in our global python.
+You can install Jupyter using `pip3` in our global python.
 
-1. Install Jupytor via `pip3`
+1. Install Jupyter via `pip3`
 ```
 $ pip3 install jupyter
 ```
 
 2. If you get the following message.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupytor-PATH.png)
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-PATH.png)
 
 You have to add `PATH` of the executable scripts.
 
@@ -179,12 +179,31 @@ $ echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
 $ source ~/.bashrc
 ```
 
-3. To start jupytor simply type the following command. Your current folder will be the workspace.
+3. To start jupyter simply type the following command. Your current folder will be the workspace.
 ```
 $ jupyter notebook
 ```
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupytor-home.png)
-3. 
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-home.png)
+
+4. Notice that when you try to create a new file there is a `python3` option. This option will run the code using the global environment. Therefore, you will need to add pythonDSAI into the jupyter before we can use it.
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new.png)  
+
+Activate pythonDSAI environment and add the environment into jupyter
+
+```
+$ source pythonDSAI/bin/activate
+(pythonDSAI) $ ipython kernel install --name pythonDSAI --user
+Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/kernels/pythondsai
+(pythonDSAI) $ deactivate
+$
+```
+
+5. Restart the jupyter notebook and you should have `pythonDSAI` environment.
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)  
+
+6. 
 
 
 ## <a name="h2-windows"></a>2. For Windows user
