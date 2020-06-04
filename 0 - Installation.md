@@ -205,4 +205,25 @@ $
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)  
 
 ## <a name="h2-windows"></a>2. For Windows user
+
+- [A. Install via `apt`](#h2-2-a)
+- [B. Virtual Environment](#h2-2-b)
+- [C. Virtual Environment in action](#h2-2-c)
+- [D. Jupyter](#h2-2-d)
+
+### <a name="h2-2-a"></a> A. Install via `apt`
+### <a name="h2-2-b"></a> B. Virtual Environment
+### <a name="h2-2-c"></a> C. Virtual Environment in action
+### <a name="h2-2-d"></a> D. Jupyter
+
 ## <a name="h2-macos"></a>3. For MacOS user
+
+- [A. Install via `apt`](#h2-3-a)
+- [B. Virtual Environment](#h2-3-b)
+- [C. Virtual Environment in action](#h2-3-c)
+- [D. Jupyter](#h2-3-d)
+
+### <a name="h2-3-a"></a> A. Install via `apt`
+### <a name="h2-3-b"></a> B. Virtual Environment
+### <a name="h2-3-c"></a> C. Virtual Environment in action
+### <a name="h2-3-d"></a> D. Jupyter
