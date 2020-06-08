@@ -110,6 +110,59 @@ Successfully installed numpy-1.18.5
 ```
 
 ## <a name="1-3-macos"></a>3. For MacOS user
+
+Some caution: Do not use the pre-installed python from MacOS.  That's python2.  Also avoid installing Anaconda, or python from python.org.  You will then have many different versions of python.  I highly recommended using terminal and Brew to install python3 which is the cleanest way.  If you have already installed Anaconda or python from python.org, uninstall them using any uninstaller tool.  When you type <code>$ python<TAB> </code>, the TAB should only show python2.7 which is pre-installed.  Do not delete this version or your MacOS will not work.  You can also check <code>$ python3 -V</code> and should return nothing.  You can also try <code>$ which python python3</code> to see which python you are using.  For advanced users who are maintaining lots of python version, you may want to set alias in bash_profile to set which one you are using, or of course, you can set up virtual environments using a particular python version. Phew...
+
+1.  First off, (strangley), MacOS decided to include a Command Line Tool app inside Xcode.  Thus we have to first install Xcode from the App store.  Then, to install the Command Line Tool app, we perform
+
+```
+$ xcode-select --install
+```
+
+2. Install homebrew.  (this is like apt-get in Ubuntu)
+
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+3. Once the installation process is complete, we’ll put the Homebrew directory at the top of the PATH environment variable. This will ensure that Homebrew installations will be called over the tools that Mac OS X may select automatically that could run counter to the development environment we’re creating.
+
+```
+$ nano ~/.bash_profile
+```
+Open the file and write the following:
+
+```
+export PATH=/usr/local/bin:$PATH
+```
+
+Activate the source
+```
+source ~/.bash_profile
+```
+
+4.  Check whether Homebrew was successfully installed:
+
+```
+$ brew doctor
+```
+
+5. Install python3
+
+```
+$ brew install python3
+```
+
+Along with Python 3, Homebrew will install pip, setuptools and wheel.
+
+
+6.  Try install packages by replacing <package_name> with, e.g., numpy
+
+```
+$pip3 install <package_name>
+```
+
+
 =====================================================================
 
 
@@ -188,6 +241,63 @@ C:>
 ```
 
 ## <a name="2-3-macos"></a> 2. For MacOS User
+
+1. First, create a place to place your programming enviornments.  It can be anyname, here my name is Environments
+
+```
+$ mkdir Environments
+$ cd Environments
+```
+
+2. Inside the directory, create enviroment with any name, here I use the name pythonDSAI
+```
+$ python -m venv pythonDSAI
+```
+
+3. To activate
+```
+$ source pythonDSAI/bin/activate
+```
+
+4.  Inside the environment, you can use only python and pip, instead of python3 and pip3 since the programming environment depends on the version that you use to create.  Try verify by
+```
+$ python -V
+$ pip -V
+```
+
+5. You probably want to upgrade your pip
+```
+pip install --upgrade pip
+```
+
+6.  You also would be lazy to type source....activate everytime.  Thus, you can open
+
+```
+$ nano ~/.bash_profile
+```
+
+Type (make sure to change /path/to/)
+```
+alias dsai="source /path/to/Environments/pythonDSAI/bin/activate"
+```
+
+To make sure bash_profile is always sourced when you open terminal, open
+
+```
+$ nano ~/.zshrc
+```
+
+Type
+```
+source /path/to/.bash_profile
+```
+
+7.  Now try to close and open your terminal again.  Simply type
+```
+$ dsai
+```
+It should now activate your env.
+
 ================================================================================
 
 
