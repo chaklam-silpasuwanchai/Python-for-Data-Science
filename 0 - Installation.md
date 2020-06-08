@@ -326,7 +326,7 @@ numpy              1.18.4
 ```
 $ pip3 list | grep numpy
 numpy         1.18.4 
-``` ```
+```
 
 
 2. remove `numpy` from global
