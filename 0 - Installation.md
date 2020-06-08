@@ -111,7 +111,7 @@ Successfully installed numpy-1.18.5
 
 ## <a name="1-3-macos"></a>3. For MacOS user
 
-Some caution: Do not use the pre-installed python from MacOS.  That's python2.  Also avoid installing Anaconda, or python from python.org.  You will then have many different versions of python.  I highly recommended using terminal and Brew to install python3 which is the cleanest way.  If you have already installed Anaconda or python from python.org, uninstall them using any uninstaller tool.  When you type <code>$ python<TAB> </code>, the TAB should only show python2.7 which is pre-installed.  Do not delete this version or your MacOS will not work.  You can also check <code>$ python3 -V</code> and should return nothing.  You can also try <code>$ which python python3</code> to see which python you are using.  For advanced users who are maintaining lots of python version, you may want to set alias in bash_profile to set which one you are using, or of course, you can set up virtual environments using a particular python version. Phew...
+Some caution: Do not use the pre-installed python from MacOS.  That's python2.  Also avoid installing Anaconda, or python from python.org.  You will then have many different versions of python.  I highly recommended using terminal and Brew to install python3 which is the cleanest way.  If you have already installed Anaconda or python from python.org, uninstall them using any uninstaller tool.  When you type <code>$ python </code> follow by <TAB>, the TAB should only show python2.7 which is pre-installed.  Do not delete this version or your MacOS will not work.  You can also check <code>$ python3 -V</code> and should return nothing.  You can also try <code>$ which python python3</code> to see which python you are using.  For advanced users who are maintaining lots of python version, you may want to set alias in bash_profile to set which one you are using, or of course, you can set up virtual environments using a particular python version. Phew...
 
 1.  First off, (strangley), MacOS decided to include a Command Line Tool app inside Xcode.  Thus we have to first install Xcode from the App store.  Then, to install the Command Line Tool app, we perform
 
@@ -159,7 +159,7 @@ Along with Python 3, Homebrew will install pip, setuptools and wheel.
 6.  Try install packages by replacing <package_name> with, e.g., numpy
 
 ```
-$pip3 install <package_name>
+$ pip3 install <package_name>
 ```
 
 
@@ -324,8 +324,9 @@ numpy              1.18.4
 
 #### MacOS
 ```
-<Insert Code Here>
-```
+$ pip3 list | grep numpy
+numpy         1.18.4 
+``` ```
 
 
 2. remove `numpy` from global
@@ -342,7 +343,7 @@ $ pip uninstall numpy
 
 #### MacOS
 ```
-<Insert Code Here>
+$ pip3 uninstall numpy
 ```
 
 3. Activate your target environment.
@@ -361,7 +362,8 @@ C:>pythonDSAI\Scripts\activate
 
 #### MacOS
 ```
-<Insert Code Here>
+$ source pythonDSAI/bin/activate
+(pythonDSAI) $
 ```
 
 4. Install and verify the `numpy` package only exist in the target environment.
@@ -388,7 +390,11 @@ C:>
 
 #### MacOS
 ```
-<Insert Code Here>
+(pythonDSAI) $ pip3 install numpy
+(pythonDSAI) $ pip3 list | grep numpy
+numpy         1.18.4 
+(pythonDSAI) $ deactivate
+$ pip3 list | grep numpy
 ```
 
 5. Here are the list of library you may need for the next four lectures.
@@ -427,8 +433,9 @@ $ source ~/.bashrc
 C:> pip install jupyter
 ```
 #### MacOS
+
 ```
-<Install Command here>
+$ pip3 install jupyter
 ```
 
 
@@ -466,7 +473,11 @@ C:>
 
 #### MacOS
 ```
-<Install Command here>
+$ source pythonDSAI/bin/activate
+(pythonDSAI) $ pip3 install ipykernel
+(pythonDSAI) $ python3 -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
+Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/kernels/pythondsai
+(pythonDSAI) $ deactivate
 ```
 
 
