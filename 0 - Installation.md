@@ -420,6 +420,7 @@ You can install Jupyter using `pip3` (Ubuntu) and `pip` (Windows) in our global 
 $ pip3 install jupyter
 ```
 If you receive the following message.
+
 ![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-path.png)
 
 You have to add `PATH` of the executable scripts.
