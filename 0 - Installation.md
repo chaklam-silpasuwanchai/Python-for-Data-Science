@@ -2,11 +2,11 @@
 
 0. [What and why?](#0-whatNwhy)
 1. [Python Installation](#1-installation)
-    1. [Ubuntu](#1-1-ubuntu)
+    1. [Linux](#1-1-Linux)
     2. [Windows](#1-2-windows)
     3. [MacOS](#1-3-macos)
 2. [Virtual Environment](#2-virtualEnvironment)
-    1. [Ubuntu](#2-1-ubuntu)
+    1. [Linux](#2-1-Linux)
     2. [Windows](#2-2-windows)
     3. [MacOS](#2-3-macos)
     4. [Virtual Environment in action](#2-4-action)
@@ -37,9 +37,9 @@ It is used for:
 2. There are different syntax between the two versions. We are recommended that you use version 3 throughout the course.
 
 # <a name="1-installation"></a>1. Python Installation
-## <a name="1-1-ubuntu"></a>1. For Ubuntu user
+## <a name="1-1-Linux"></a>1. For Linux user
 
-[Reference](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-ubuntu-20-04-server)
+[Reference](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-Linux-20-04-server)
 
 ### Install via `apt`
 1. Open your terminal
@@ -75,7 +75,7 @@ Installing collected packages: numpy
 Successfully installed numpy-1.18.4
 ```
 
-*Note that we are not using `sudo` in front of the command. When you are installing the ubuntu package, it is required to use root privilege here. Using `sudo` in front of any command to run the command as root. However, when you are installing the python package, you do not need to issue root privilege. In fact, doing so is not recommended due to the security concerned.*
+*Note that we are not using `sudo` in front of the command. When you are installing the Linux package, it is required to use root privilege here. Using `sudo` in front of any command to run the command as root. However, when you are installing the python package, you do not need to issue root privilege. In fact, doing so is not recommended due to the security concerned.*
 
 8. Install development tools.
 ```
@@ -119,7 +119,7 @@ Some caution: Do not use the pre-installed python from MacOS.  That's python2.  
 $ xcode-select --install
 ```
 
-2. Install homebrew.  (this is like apt-get in Ubuntu)
+2. Install homebrew.  (this is like apt-get in Linux)
 
 ```
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -176,7 +176,7 @@ Remember that a package that we download using `pip3` is written by a human. The
 
 To overcome this problem (and many more reasons to do the following), we will set up a Virtual Environment.
 
-## <a name="2-1-ubuntu"></a> 1. For Ubuntu User
+## <a name="2-1-Linux"></a> 1. For Linux User
 
 1. Our environment manager of choice is `venv`
 ```
@@ -306,7 +306,7 @@ It should now activate your env.
 We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
 1. Check that `numpy` is installed.
 
-#### Ubuntu
+#### Linux
 ```
 $ pip3 list | grep numpy
 numpy         1.18.4 
@@ -331,7 +331,7 @@ numpy         1.18.4
 
 2. remove `numpy` from global
 
-#### Ubuntu
+#### Linux
 ```
 $ pip3 uninstall numpy
 ```
@@ -348,7 +348,7 @@ $ pip3 uninstall numpy
 
 3. Activate your target environment.
 
-#### Ubuntu
+#### Linux
 ```
 $ source pythonDSAI/bin/activate
 (pythonDSAI) $
@@ -368,7 +368,7 @@ $ source pythonDSAI/bin/activate
 
 4. Install and verify the `numpy` package only exist in the target environment.
 
-#### Ubuntu
+#### Linux
 ```
 (pythonDSAI) $ pip3 install numpy
 (pythonDSAI) $ pip3 list | grep numpy
@@ -401,7 +401,7 @@ $ pip3 list | grep numpy
 ``` 
 numpy torch torchvision matplotlib pandas seaborn pandas_datareader sklearn
 ```
-For Ubuntu and Windows user, you will need to install PyTorch using below command
+For Linux and Windows user, you will need to install PyTorch using below command
 ```
 pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 ```
@@ -411,11 +411,11 @@ pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.
 
 You will need a text editor to write a code. While there are many great python editors out there, we will use Jupyter for this course to simplify the process of checking your works. 
 
-You can install Jupyter using `pip3` (Ubuntu) and `pip` (Windows) in our global python.
+You can install Jupyter using `pip3` (Linux) and `pip` (Windows) in our global python.
 
 1. Install Jupyter via `pip`
 
-#### Ubuntu
+#### Linux
 ```
 $ pip3 install jupyter
 ```
@@ -452,7 +452,7 @@ jupyter notebook
 
 Activate pythonDSAI environment and add the environment into jupyter
 
-#### Ubuntu
+#### Linux
 ```
 $ source pythonDSAI/bin/activate
 (pythonDSAI) $ pip3 install ipykernel
