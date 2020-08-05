@@ -56,3 +56,7 @@ docs/_build/
 /.ipynb_checkpoints
 
 AkraradetSolution
+
+#big files
+data
+models
