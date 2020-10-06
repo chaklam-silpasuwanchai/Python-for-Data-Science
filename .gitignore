@@ -60,3 +60,6 @@ AkraradetSolution
 #big files
 data
 models
+
+#mac stuff
+.DS_Store
