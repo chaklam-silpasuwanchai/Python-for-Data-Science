@@ -1,12 +1,22 @@
 # Deep Learning Papers Reading Roadmap
 
-It is good to have some direction when you read deep learning papers.  This is not a comprehensive list of history of impactful papers, but aim to keep it as short as possible, while getting you as close to the state of the art
+It is good to have some direction when you read deep learning papers.  This is not a comprehensive list of history of impactful papers, but aim to keep it as short as possible, while getting you as close to the state of the art, given the time you have in your project / thesis.
+
+## Starters
+
+Read to get overall picture.
+
+- (2015) [Survey](http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
 
 ## Image
 
 Architectures for classifying images.
 
 - (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), [ResNetv2](https://arxiv.org/abs/1603.05027), [ResNetv3](https://arxiv.org/abs/1611.05431)
+
+- (2015) [Pruning](https://arxiv.org/abs/1510.00149)
+
+- (2016) [SqueezeNet](https://arxiv.org/abs/1602.07360)
 
 - (2019) [EfficientNet](https://arxiv.org/abs/1905.11946)
 
@@ -101,11 +111,31 @@ Extract locations and predict the class.
 
 - (2015) [Faster R-CNN](https://arxiv.org/abs/1506.01497)
 
-- (2017) [Mask R-CNN](https://arxiv.org/abs/1703.06870)
-
 - (2016) [PointNet](https://arxiv.org/abs/1612.00593)
 
+- (2017) [Mask R-CNN](https://arxiv.org/abs/1703.06870)
+
 - (2019) [Mesh R-CNN](https://arxiv.org/abs/1906.02739)
+
+## Meta Learning
+
+Apply training to different learning problems.
+
+- (2017) [Meta Learning](https://arxiv.org/abs/1703.03400)
+
+## Image Caption
+
+Generating image caption.
+
+- (2015) [Show](https://arxiv.org/pdf/1502.03044v3.pdf)
+
+## Reinforcement Learning
+
+Learn by doing.
+
+- (2016) [Go](https://www.nature.com/articles/nature16961)
+
+- (2017) [Forgetting](https://www.pnas.org/content/114/13/3521.short)
 
 ## Theory
 
@@ -131,7 +161,7 @@ Optimization: How to best improve training procedure?
 
 - (2018) [Lottery Ticket](https://arxiv.org/abs/1803.03635)
 
-- (2018) [Large Batch Training](https://arxiv.org/abs/1812.06162)
+- (2018) [Large Batch Training](https://arxiv.org/abs/1902.10811)
 
 - (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
 
@@ -139,3 +169,4 @@ Optimization: How to best improve training procedure?
 
 - (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
 
+- (2018) [Excitation](https://arxiv.org/abs/1709.01507v4)
