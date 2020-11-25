@@ -36,11 +36,15 @@ Effective way to represent words.
 
 - (2013) [Word2Vec](https://arxiv.org/abs/1610.02357)
 
+- (2018) [Deep Word2Vec](https://arxiv.org/abs/1802.05365)
+
 ### Seq2Seq
 
 Machine translation.
 
 - (2014) [Seq2Seq](https://arxiv.org/pdf/1409.3215.pdf)
+
+- (2014) [AlignTranslate](https://arxiv.org/abs/1409.0473)
 
 ### Attention
 
@@ -87,6 +91,10 @@ Learning the probability density function and thus able to generate, cluster, or
 
 - (2018) [BigGAN](https://arxiv.org/abs/1809.11096)
 
+- (2018) [StarGAN](https://arxiv.org/abs/1711.09020v3)
+
+- (2019) [AttentionGAN](http://proceedings.mlr.press/v97/zhang19d.html)
+
 ### Style Transfer
 
 - (2016) [Style Transfer](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Gatys_Image_Style_Transfer_CVPR_2016_paper.pdf)
@@ -117,11 +125,13 @@ Extract locations and predict the class.
 
 - (2019) [Mesh R-CNN](https://arxiv.org/abs/1906.02739)
 
-## Meta Learning
+## Meta Learning / Transfer Learning
 
 Apply training to different learning problems.
 
 - (2017) [Meta Learning](https://arxiv.org/abs/1703.03400)
+
+- (2018) [NASNet](https://arxiv.org/abs/1707.07012v4)
 
 ## Image Caption
 
@@ -165,7 +175,7 @@ Optimization: How to best improve training procedure?
 
 - (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
 
-## Others
+## Data Augmentation
 
 - (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
 
