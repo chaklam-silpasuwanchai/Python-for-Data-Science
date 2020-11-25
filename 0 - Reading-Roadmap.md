@@ -20,6 +20,11 @@ Architectures for classifying images.
 
 - (2019) [EfficientNet](https://arxiv.org/abs/1905.11946)
 
+## Data Augmentation
+
+- (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
+
+- (2018) [Excitation](https://arxiv.org/abs/1709.01507v4)
 
 ## Sequence-to-sequence / RNN (text / signals)
 
@@ -174,9 +179,3 @@ Optimization: How to best improve training procedure?
 - (2018) [Large Batch Training](https://arxiv.org/abs/1902.10811)
 
 - (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
-
-## Data Augmentation
-
-- (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
-
-- (2018) [Excitation](https://arxiv.org/abs/1709.01507v4)
