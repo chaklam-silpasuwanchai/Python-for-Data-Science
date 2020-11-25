@@ -57,6 +57,7 @@ Unsupervised, e.g., topic modeling, generating text
 
 - (2018) [BERT](https://arxiv.org/abs/1810.04805)
 
+- (2019) [XLNet](https://arxiv.org/abs/1906.08237)
 
 ## Neural Architecture Search
 
@@ -69,6 +70,8 @@ Automatically generating a neural network architecture .
 - (2018) [DARTS](https://arxiv.org/abs/1806.09055)
 
 - (2019) [Random Search](https://arxiv.org/abs/1902.07638)
+
+- (2019) [AmoebaNet](https://arxiv.org/abs/1802.01548)
 
 ## Generative Models / Unsupervised
 
@@ -138,6 +141,10 @@ Generating image caption.
 
 - (2015) [Show](https://arxiv.org/pdf/1502.03044v3.pdf)
 
+Question answering
+
+- (2016) [Answer](https://arxiv.org/abs/1601.01705)
+
 ## Reinforcement Learning
 
 Learn by doing.
@@ -148,13 +155,25 @@ Learn by doing.
 
 ## Theory
 
-Generalization: How to build generalized model across an entire distribution, not only on trained samples?
+### Generalization
 
-Robustness: How to build robust model that is robust against distribution shift?
+How to build generalized model across an entire distribution, not only on trained samples?
 
-Optimization: How to best improve training procedure?
+- (2016) [Rethinking Generalization](https://arxiv.org/abs/1611.03530)
 
-Pruning: How to make the model more lean with less parameters but with similar accuracy?
+- (2018) [Parameter Function Map](https://arxiv.org/abs/1805.08522)
+
+### Robustness
+
+How to build robust model that is robust against distribution shift?
+
+- (2018) [Texture Bias](https://arxiv.org/abs/1811.12231)
+
+- (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
+
+### Optimization
+
+How to best improve training procedure?
 
 - (2013) [Momentum](http://www.jmlr.org/proceedings/papers/v28/sutskever13.pdf)
 
@@ -164,22 +183,26 @@ Pruning: How to make the model more lean with less parameters but with similar a
 
 - (2015) [Batch Norm](https://arxiv.org/abs/1502.03167)
 
-- (2015) [Pruning](https://arxiv.org/abs/1510.00149)
-
 - (2016) [Neural Optimzer](https://arxiv.org/pdf/1606.04474)
 
-- (2016) [Rethinking Generalization](https://arxiv.org/abs/1611.03530)
-
-- (2016) [SqueezeNet](https://arxiv.org/abs/1602.07360)
-
-- (2018) [Parameter Function Map](https://arxiv.org/abs/1805.08522)
-
-- (2018) [Texture Bias](https://arxiv.org/abs/1811.12231)
-
-- (2018) [Lottery Ticket](https://arxiv.org/abs/1803.03635)
+- (2016) [Hyperband](https://arxiv.org/abs/1603.06560)
 
 - (2018) [Large Batch Training](https://arxiv.org/abs/1902.10811)
 
-- (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
+- (2018) [Parallel Hyperparameter Tuning](https://arxiv.org/abs/1810.05934)
+
+- (2019) [Lookahead](https://arxiv.org/abs/1907.08610)
+
+### Pruning
+
+How to make the model more lean with less parameters but with similar accuracy? Or more lightweight?
+
+- (2015) [Pruning](https://arxiv.org/abs/1510.00149)
+
+- (2016) [SqueezeNet](https://arxiv.org/abs/1602.07360)
+
+- (2017) [MobileNets](https://arxiv.org/abs/1704.04861)
+
+- (2018) [Lottery Ticket](https://arxiv.org/abs/1803.03635)
 
 - (2019) [EfficientNet](https://arxiv.org/abs/1905.11946)
