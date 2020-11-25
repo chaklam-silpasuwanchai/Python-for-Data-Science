@@ -14,12 +14,6 @@ Architectures for classifying images.
 
 - (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), [ResNetv2](https://arxiv.org/abs/1603.05027), [ResNetv3](https://arxiv.org/abs/1611.05431)
 
-- (2015) [Pruning](https://arxiv.org/abs/1510.00149)
-
-- (2016) [SqueezeNet](https://arxiv.org/abs/1602.07360)
-
-- (2019) [EfficientNet](https://arxiv.org/abs/1905.11946)
-
 ## Data Augmentation
 
 - (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
@@ -155,8 +149,12 @@ Learn by doing.
 ## Theory
 
 Generalization: How to build generalized model across an entire distribution, not only on trained samples?
+
 Robustness: How to build robust model that is robust against distribution shift?
+
 Optimization: How to best improve training procedure?
+
+Pruning: How to make the model more lean with less parameters but with similar accuracy?
 
 - (2013) [Momentum](http://www.jmlr.org/proceedings/papers/v28/sutskever13.pdf)
 
@@ -166,9 +164,13 @@ Optimization: How to best improve training procedure?
 
 - (2015) [Batch Norm](https://arxiv.org/abs/1502.03167)
 
+- (2015) [Pruning](https://arxiv.org/abs/1510.00149)
+
 - (2016) [Neural Optimzer](https://arxiv.org/pdf/1606.04474)
 
 - (2016) [Rethinking Generalization](https://arxiv.org/abs/1611.03530)
+
+- (2016) [SqueezeNet](https://arxiv.org/abs/1602.07360)
 
 - (2018) [Parameter Function Map](https://arxiv.org/abs/1805.08522)
 
@@ -179,3 +181,5 @@ Optimization: How to best improve training procedure?
 - (2018) [Large Batch Training](https://arxiv.org/abs/1902.10811)
 
 - (2019) [Imagnet Generalization](https://arxiv.org/abs/1902.10811)
+
+- (2019) [EfficientNet](https://arxiv.org/abs/1905.11946)
