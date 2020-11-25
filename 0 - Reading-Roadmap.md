@@ -1,4 +1,4 @@
-# Deep Learning Papers Reading Roadmap
+# Paper Reading Roadmap
 
 It is good to have some direction when you read deep learning papers.  This is not a comprehensive list of history of impactful papers, but aim to keep it as short as possible, while getting you as close to the state of the art, given the time you have in your project / thesis.
 
