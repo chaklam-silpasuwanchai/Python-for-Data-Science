@@ -8,7 +8,7 @@ Note: You MUST (99%) cite these works.  All these works are consider breakthroug
 
 ## Starters
 
-Read to get overall picture.
+Overall picture.
 
 - (2015) [Survey](http://www.cs.toronto.edu/~hinton/absps/NatureDeepReview.pdf)
 
@@ -186,7 +186,7 @@ How to build robust model that is robust against distribution shift?
 
 ### Optimization
 
-How to best improve training procedure?
+How to improve training procedure?
 
 - (2013) [Momentum](http://www.jmlr.org/proceedings/papers/v28/sutskever13.pdf)
 
