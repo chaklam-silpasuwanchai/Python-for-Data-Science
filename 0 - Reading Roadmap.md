@@ -14,13 +14,13 @@ Read to get overall picture.
 
 Architectures for classifying images.
 
-- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), (2016)[ResNetv2](https://arxiv.org/abs/1603.05027), (2017)[ResNetv3](https://arxiv.org/abs/1611.05431)
+- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), (2016) [ResNetv2](https://arxiv.org/abs/1603.05027), (2017)[ResNetv3](https://arxiv.org/abs/1611.05431)
 
 ## Data Augmentation
 
-- (2018) [AutoAugment](https://arxiv.org/abs/1805.09501)
-
 - (2018) [Excitation](https://arxiv.org/abs/1709.01507v4)
+
+- (2019) [AutoAugment](https://arxiv.org/abs/1805.09501)
 
 ## NLP / Sequence
 
@@ -28,7 +28,7 @@ Architectures for classifying images.
 
 Recurrent Neural Networks
 
-- (2014) [LSTM](https://arxiv.org/pdf/1308.0850.pdf)
+- (2014) [LSTM](https://arxiv.org/abs/1308.0850)
 
 - (2014) [GRU](https://arxiv.org/abs/1412.3555)
 
@@ -46,9 +46,9 @@ Effective way to represent words.
 
 Machine translation.
 
-- (2014) [Seq2Seq](https://arxiv.org/pdf/1409.3215.pdf)
+- (2014) [Seq2Seq](https://arxiv.org/abs/1409.3215)
 
-- (2014) [AlignTranslate](https://arxiv.org/abs/1409.0473)
+- (2015) [AlignTranslate](https://arxiv.org/abs/1409.0473)
 
 ### Attention
 
