@@ -4,6 +4,8 @@ It is good to have some direction when you read deep learning papers.  This is n
 
 I have estimated that if you read one paper a day, it should take you only around at most a month to understand the landscape.  Of course, you don't want to read everything but focus on what you want to work on in your thesis! 
 
+Note: You MUST (99%) cite these works.  All these works are consider breakthrough in their field.  For example, I exclude AlexNet - although it is one of the most classic paper, it is now consider more classic than something that you must cite, since there are much better state-of-the-art like ResNet or EfficientNet.
+
 ## Starters
 
 Read to get overall picture.
