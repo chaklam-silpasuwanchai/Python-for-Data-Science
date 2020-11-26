@@ -1,6 +1,8 @@
 # Paper Reading Roadmap
 
-It is good to have some direction when you read deep learning papers.  This is not a comprehensive list of history of impactful papers, but aim to keep it as short as possible, while getting you as close to the state of the art, given the time you have in your project / thesis.
+It is good to have some direction when you read deep learning papers.  This is not a comprehensive list of history of impactful papers, but aim to keep it as short as possible, while getting you as close to the state of the art, given the time you have in your project / thesis.  
+
+I have estimated that if you read one paper a day, it should take you only around at most a month to understand the landscape.  Of course, you don't want to read everything but focus on what you want to work on in your thesis! 
 
 ## Starters
 
@@ -12,7 +14,7 @@ Read to get overall picture.
 
 Architectures for classifying images.
 
-- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), [ResNetv2](https://arxiv.org/abs/1603.05027), [ResNetv3](https://arxiv.org/abs/1611.05431)
+- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), (2016)[ResNetv2](https://arxiv.org/abs/1603.05027), (2017)[ResNetv3](https://arxiv.org/abs/1611.05431)
 
 ## Data Augmentation
 
@@ -20,20 +22,23 @@ Architectures for classifying images.
 
 - (2018) [Excitation](https://arxiv.org/abs/1709.01507v4)
 
-## Sequence-to-sequence / RNN (text / signals)
+## NLP / Sequence
 
-- (2013) [LSTM](http://arxiv.org/pdf/1308.0850)
+### RNN
 
-- (2014) [Seq2Seq](https://arxiv.org/abs/1409.3215)
+Recurrent Neural Networks
 
+- (2014) [LSTM](https://arxiv.org/pdf/1308.0850.pdf)
 
-## NLP
+- (2014) [GRU](https://arxiv.org/abs/1412.3555)
 
 ### Word Vectors
 
 Effective way to represent words.
 
 - (2013) [Word2Vec](https://arxiv.org/abs/1610.02357)
+
+- (2017) [Subword](https://www.mitpressjournals.org/doi/abs/10.1162/tacl_a_00051)
 
 - (2018) [Deep Word2Vec](https://arxiv.org/abs/1802.05365)
 
@@ -89,6 +94,10 @@ Learning the probability density function and thus able to generate, cluster, or
 
 - (2014) [GAN](https://arxiv.org/abs/1406.2661)
 
+- (2017) [ProgressiveGAN](https://arxiv.org/abs/1710.10196)
+
+- (2017) [WGAN](https://proceedings.neurips.cc/paper/2017/hash/892c3b1c6dccd52936e27cbd0ff683d6-Abstract.html)
+
 - (2018) [SN-GAN](https://openreview.net/pdf?id=B1QRgziT-)
 
 - (2018) [BigGAN](https://arxiv.org/abs/1809.11096)
@@ -105,9 +114,9 @@ Learning the probability density function and thus able to generate, cluster, or
 
 ### Autoregressive Models
 
-- (2016) [PixelCNN](https://arxiv.org/abs/1606.05328)
-
 - (2016) [WaveNet](https://arxiv.org/abs/1609.03499)
+
+- (2016) [PixelCNN](https://arxiv.org/abs/1606.05328)
 
 ### Normalizing Flows
 
@@ -140,6 +149,8 @@ Apply training to different learning problems.
 Generating image caption.
 
 - (2015) [Show](https://arxiv.org/pdf/1502.03044v3.pdf)
+
+- (2015) [Show2](http://openaccess.thecvf.com/content_cvpr_2015/html/Vinyals_Show_and_Tell_2015_CVPR_paper.html)
 
 Question answering
 
@@ -182,6 +193,8 @@ How to best improve training procedure?
 - (2014) [Adam](https://arxiv.org/abs/1412.6980)
 
 - (2015) [Batch Norm](https://arxiv.org/abs/1502.03167)
+
+- (2016) [Layer Norm](https://arxiv.org/abs/1607.06450)
 
 - (2016) [Neural Optimzer](https://arxiv.org/pdf/1606.04474)
 
