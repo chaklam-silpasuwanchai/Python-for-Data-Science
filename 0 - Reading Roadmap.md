@@ -24,7 +24,7 @@ Architectures for classifying images.
 
 - (2013) [LSTM](http://arxiv.org/pdf/1308.0850)
 
-- (2014) [First Seq2Seq](http://arxiv.org/pdf/1406.1078)
+- (2014) [Seq2Seq](https://arxiv.org/abs/1409.3215)
 
 
 ## NLP
