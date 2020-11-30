@@ -162,6 +162,8 @@ Question answering
 
 Learn by doing.
 
+- (2013) [Q-learning](https://arxiv.org/abs/1312.5602v1)
+
 - (2016) [Go](https://www.nature.com/articles/nature16961)
 
 - (2017) [Forgetting](https://www.pnas.org/content/114/13/3521.short)
