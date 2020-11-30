@@ -58,8 +58,11 @@ docs/_build/
 AkraradetSolution
 
 #big files
-data
-models
+data/*
+.data/*
+.vector_cache/*
+models/*
+samples/*
 
 #mac stuff
 .DS_Store
