@@ -4,7 +4,7 @@ This is the repository for the course Python for DSAI at Asian Institute of Tech
 
 This course is a 15 weeks course, each week having two labs of 3 hours each.
 
-The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspective:
+The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
 
 (Note: For detailed information, please read "0 - Course Introduction")
 
