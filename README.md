@@ -4,7 +4,7 @@ This is the repository for the course Python for DSAI at Asian Institute of Tech
 
 This course is a 15 weeks course, each week having two labs of 3 hours each.
 
-The course is structured into 3 big components, mostly focusing on machine learning:
+The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspective:
 
 ### 1. Python Basics
 Focus on getting started.
@@ -41,7 +41,7 @@ Focus on understanding the math + coding via coding from scratch
   - Manifold Learning
 
 ### 3. Deep Learning
-Focus on understanding basic on deep learning
+Focus on understanding fundamentals on deep learning
 
 #### 3.1 Neural Network from Scratch
 #### 3.2 Image
