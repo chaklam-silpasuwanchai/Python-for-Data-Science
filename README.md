@@ -43,9 +43,15 @@ Focus on understanding the math + coding via coding from scratch
   - Manifold Learning
 
 ### 3. Deep Learning
-Focus on understanding fundamentals on deep learning
+Focus on understanding fundamentals on deep learning; uses PyTorch
 
 #### 3.1 Neural Network from Scratch
+  - Momentum
+  - Batch Norm
+  - Dropout
+  - Decay Learning Rate
+  - Glorot Initialization
+  - Activation Functions
 #### 3.2 Image
   - Convolutional Neural Network
   - Generative Adversarial Network
