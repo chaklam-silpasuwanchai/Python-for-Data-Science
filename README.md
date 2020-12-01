@@ -2,6 +2,17 @@
 
 This is the repository for the course Python for DSAI at Asian Institute of Technology.
 
+It contains mostly notebooks and datasets required for the lectures.
+
+Some resource worth mentioning:
+
+1. 0 - Reading Roadmap
+  - For those who wants to know what papers to read.  I have listed ONLY the most important papers you need to read in the field of machine learning
+2. 0 - Installation
+  - For newbies who have trouble installing Python and other tools
+3. 0 - Course Notations
+  - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
+
 This course is a 15 weeks course, each week having two labs of 3 hours each.
 
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
