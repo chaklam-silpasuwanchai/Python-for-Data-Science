@@ -6,6 +6,8 @@ This course is a 15 weeks course, each week having two labs of 3 hours each.
 
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspective:
 
+(Note: For detailed information, please read "0 - Course Introduction")
+
 ### 1. Python Basics
 Focus on getting started.
   - Python
@@ -57,5 +59,3 @@ Focus on understanding fundamentals on deep learning
 #### 3.5 Reinforcement Learning
 #### 3.6 Pruning
 #### 3.7 Hyperparameter Tuning
-
-For detailed information, please read "0 - Course Introduction".
