@@ -63,5 +63,6 @@ Focus on understanding fundamentals on deep learning; uses PyTorch
 #### 3.4 Audio Processing
   - Speech Classification
 #### 3.5 Reinforcement Learning
+  - Q-learning
 #### 3.6 Pruning
 #### 3.7 Hyperparameter Tuning
