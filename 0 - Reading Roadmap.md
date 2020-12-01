@@ -6,6 +6,14 @@ I have estimated that if you read one paper a day, it should take you only aroun
 
 Note: You MUST (99%) cite these works.  All these works are consider breakthrough in their field.  For example, I exclude AlexNet - although it is one of the most classic paper, it is now consider more classic than something that you must cite, since there are much better state-of-the-art like ResNet or EfficientNet.
 
+## Top conferences
+
+If you want to read, always start here.
+
+- International Conference on Learning Representations (ICLR)
+- Neural Information Processing Systems (NIPS)
+- International Conference on Machine Learning (ICML)
+
 ## Starters
 
 Overall picture.
