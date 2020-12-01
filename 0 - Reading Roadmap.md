@@ -24,7 +24,7 @@ Overall picture.
 
 Architectures for classifying images.
 
-- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), (2016) [ResNetv2](https://arxiv.org/abs/1603.05027), (2017)[ResNetv3](https://arxiv.org/abs/1611.05431)
+- (2015) [ResNet](https://arxiv.org/pdf/1512.03385.pdf), (2016) [ResNetv2](https://arxiv.org/abs/1603.05027), (2017) [ResNetv3](https://arxiv.org/abs/1611.05431)
 
 ## Data Augmentation
 
