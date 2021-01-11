@@ -90,7 +90,7 @@ Automatically generating a neural network architecture .
 
 ## Generative Models / Unsupervised
 
-Learning the probability density function and thus able to generate, cluster, or style transfer samples from the distribution.
+Learning the probability density function and thus able to generate, cluster, or style transfer samples from the distribution.  Hence is able to generate new data to address lack of data or loss of data.
 
 ### Variational Autoencoders
 
