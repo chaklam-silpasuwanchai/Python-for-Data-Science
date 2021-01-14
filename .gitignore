@@ -57,12 +57,7 @@ docs/_build/
 
 AkraradetSolution
 
-#big files
-Lectures/data/*
-Lectures/.data/*
-Lectures/.vector_cache/*
-Lectures/models/*
-Lectures/samples/*
-
-#mac stuff
 .DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store
