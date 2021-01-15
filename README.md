@@ -10,6 +10,10 @@ Some resource worth mentioning:
   - For newbies who have trouble installing Python and other tools
 3. Lectures/Starters/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
+4. Lectures/Advanced
+  - These are lessons I do not intend to teach given the time limit.  It is intended for self-study.
+5. Self-Exercises
+  - Every Lecture has a lab folder containing the assessment and solution.  Anyhow, I also compile a list of possible exercises for student's self learning inside the Self-Exercises folder.
   
 I would also like to give credits to several githubs that I have revised to creat this:
 
