@@ -15,7 +15,7 @@ Some resource worth mentioning:
 5. Self-Exercises
   - Every Lecture has a lab folder containing the assessment and solution.  Anyhow, I also compile a list of possible exercises for student's self learning inside the Self-Exercises folder.
 6. AIT-2020
-  - The file "0. Course Introduction.ipynb" contains how I run the course.  Each lab session is a 3 hours lab.  Each lab always end with the assessment and solution.
+  - The file "0. Course Introduction.ipynb" contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.  Each lab always end with the assessment and solution.
   
 I would also like to give credits to several githubs that I have revised to create this:
 
@@ -23,7 +23,6 @@ I would also like to give credits to several githubs that I have revised to crea
 - https://github.com/SethHWeidman/DLFS_code
 - https://github.com/jakevdp/PythonDataScienceHandbook
 
-This course is a 15 weeks course, each week having two labs of 3 hours each.
 
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
 
