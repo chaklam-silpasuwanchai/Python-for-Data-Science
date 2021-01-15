@@ -57,10 +57,18 @@ Focus on understanding the math + coding via coding from scratch
   - Principal Component Analysis
   - Manifold Learning
 
-### 3 Neural Network from Scratch
+### 3. Deep Learning
+
+#### 3.1 Neural Network from Scratch
   - Momentum
   - Batch Norm
   - Dropout
   - Decay Learning Rate
   - Glorot Initialization
   - Activation Functions
+  
+#### 3.2 PyTorch
+  - Basics
+  - ANN
+  - CNN
+  - RNN
