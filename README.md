@@ -10,6 +10,12 @@ Some resource worth mentioning:
   - For newbies who have trouble installing Python and other tools
 3. Lectures/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
+  
+I would also like to give credits to several githubs that I have revised to creat this:
+
+- https://github.com/drgona/Pytorch_bootcamp_Udemy
+- https://github.com/SethHWeidman/DLFS_code
+- https://github.com/jakevdp/PythonDataScienceHandbook
 
 This course is a 15 weeks course, each week having two labs of 3 hours each.
 
