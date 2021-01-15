@@ -51,7 +51,7 @@ Focus on understanding the math + coding via coding from scratch
   - Principal Component Analysis
   - Manifold Learning
 
-#### 3 Neural Network from Scratch
+### 3 Neural Network from Scratch
   - Momentum
   - Batch Norm
   - Dropout
