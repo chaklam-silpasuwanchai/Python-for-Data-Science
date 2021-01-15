@@ -17,7 +17,7 @@ Some resource worth mentioning:
 6. AIT-2020
   - The file "0. Course Introduction.ipynb" contains how I run the course.  Each lab session is a 3 hours lab.  Each lab always end with the assessment and solution.
   
-I would also like to give credits to several githubs that I have revised to creat this:
+I would also like to give credits to several githubs that I have revised to create this:
 
 - https://github.com/drgona/Pytorch_bootcamp_Udemy
 - https://github.com/SethHWeidman/DLFS_code
