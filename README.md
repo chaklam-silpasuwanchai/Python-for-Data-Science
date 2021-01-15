@@ -14,6 +14,8 @@ Some resource worth mentioning:
   - These are lessons I do not intend to teach given the time limit.  It is intended for self-study.
 5. Self-Exercises
   - Every Lecture has a lab folder containing the assessment and solution.  Anyhow, I also compile a list of possible exercises for student's self learning inside the Self-Exercises folder.
+6. AIT-2020
+  - The file "0. Course Introduction.ipynb" contains how I run the course.  Each lab session is a 3 hours lab.  Each lab always end with the assessment and solution.
   
 I would also like to give credits to several githubs that I have revised to creat this:
 
