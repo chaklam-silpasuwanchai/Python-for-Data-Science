@@ -4,11 +4,11 @@ This is the repository for the course Python for DSAI at Asian Institute of Tech
 
 Some resource worth mentioning:
 
-1. Lectures/0 - Reading Roadmap
+1. Lectures/Starters/0 - Reading Roadmap
   - For those who wants to know what papers to read.  I have listed ONLY the most important papers you need to read in the field of machine learning
-2. Lectures/0 - Installation
+2. Lectures/Starters/0 - Installation
   - For newbies who have trouble installing Python and other tools
-3. Lectures/0 - Course Notations
+3. Lectures/Starters/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
   
 I would also like to give credits to several githubs that I have revised to creat this:
