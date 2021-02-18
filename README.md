@@ -4,14 +4,25 @@ This is the repository for the course Python for DSAI at Asian Institute of Tech
 
 Some resource worth mentioning:
 
-1. Lectures/0 - Reading Roadmap
+1. Lectures/Starters/0 - Reading Roadmap
   - For those who wants to know what papers to read.  I have listed ONLY the most important papers you need to read in the field of machine learning
-2. Lectures/0 - Installation
+2. Lectures/Starters/0 - Installation
   - For newbies who have trouble installing Python and other tools
-3. Lectures/0 - Course Notations
+3. Lectures/Starters/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
+4. Lectures/Advanced
+  - These are lessons I do not intend to teach given the time limit.  It is intended for self-study.
+5. Self-Exercises
+  - Every Lecture has a lab folder containing the assessment and solution.  Anyhow, I also compile a list of possible exercises for student's self learning inside the Self-Exercises folder.
+6. AIT-2020
+  - The file "0. Course Introduction.ipynb" contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.  Each lab always end with the assessment and solution.
+  
+I would also like to give credits to several githubs that I have revised to create this:
 
-This course is a 15 weeks course, each week having two labs of 3 hours each.
+- https://github.com/drgona/Pytorch_bootcamp_Udemy
+- https://github.com/SethHWeidman/DLFS_code
+- https://github.com/jakevdp/PythonDataScienceHandbook
+
 
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
 
@@ -51,10 +62,18 @@ Focus on understanding the math + coding via coding from scratch
   - Principal Component Analysis
   - Manifold Learning
 
-#### 3 Neural Network from Scratch
+### 3. Deep Learning
+
+#### 3.1 Neural Network from Scratch
   - Momentum
   - Batch Norm
   - Dropout
   - Decay Learning Rate
   - Glorot Initialization
   - Activation Functions
+  
+#### 3.2 PyTorch
+  - Basics
+  - ANN
+  - CNN
+  - RNN
