@@ -1,2 +1,0 @@
-Hello, this is a quick test file.
-Hello, this is a quick test file 2.
