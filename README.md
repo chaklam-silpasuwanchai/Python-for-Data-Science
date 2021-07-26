@@ -19,6 +19,12 @@ I would also like to give credits to several githubs that I have revised to crea
 - https://github.com/SethHWeidman/DLFS_code
 - https://github.com/jakevdp/PythonDataScienceHandbook
 
+I would also like to thank students who have contributed:
+
+- Akraradet Sinsamersuk
+- Pranisaa Charnparttarvanit
+- Chanapa Pananookooln
+
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
 
 ### 1. Python Basics
