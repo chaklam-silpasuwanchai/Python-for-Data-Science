@@ -59,7 +59,6 @@ Focus on understanding the math + coding via coding from scratch
 
 #### 2.4 Dimensionality Reduction
   - Principal Component Analysis
-  - Manifold Learning
 
 ### 3. Deep Learning
 
@@ -67,7 +66,7 @@ Focus on understanding the math + coding via coding from scratch
   - Linear Regression
   - Logistic Regression
   - Convolutional Neural Network
-  -  
+  
 #### 3.2 NLP 
   - Recurrent Neural Network
   - Word Embeddings
