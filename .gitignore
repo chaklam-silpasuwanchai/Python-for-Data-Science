@@ -63,3 +63,13 @@ AkraradetSolution
 **/._.DS_Store
 
 Quiz/
+
+.data
+._.data
+**/.data
+**/._.data
+
+data
+._.data
+**/data
+**/data
