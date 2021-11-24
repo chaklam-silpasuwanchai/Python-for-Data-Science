@@ -71,4 +71,5 @@ Focus on understanding the math + coding via coding from scratch
   - Recurrent Neural Network
   - Word Embeddings
   - Padded Sequence
+  - Convolutional Neural Network for NLP
   - Bidirectonal Stacked LSTM
