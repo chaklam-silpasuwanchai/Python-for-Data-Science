@@ -15,7 +15,6 @@ Some resource worth mentioning:
   
 I would also like to give credits to several githubs that I have revised to create this:
 
-- https://github.com/drgona/Pytorch_bootcamp_Udemy
 - https://github.com/SethHWeidman/DLFS_code
 - https://github.com/jakevdp/PythonDataScienceHandbook
 - https://github.com/bentrevett/pytorch-sentiment-analysis
