@@ -7,6 +7,7 @@ Great data scientist excels in twofold: science and engineering.
 Science -> Why?
 - Respect domain knowledge
 - Visualize your datasets (know what is X and y)
+  - You should be able to visualize some patterns 
 - Understand your datasets (where they are from, how they are collected, and how they are potentially contaminated)
 - Form hypotheses (and iteratively refine them as you go)
 - Form an intuition which architecture would work well
