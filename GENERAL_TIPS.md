@@ -1,4 +1,4 @@
-## Project Recipe for Success
+## Recipe for Success
 
 Data Science is hard! (and fun and very satisfying if you can do it AT THE END)
 
