@@ -8,7 +8,7 @@ Science -> Why?
 - Respect domain knowledge
 - Visualize your datasets (know what is X and y)
 - Understand your datasets (where they are from, and how they are collected, and how they are potentially contaminated)
-- Form hypotheses (only one group did this)
+- Form hypotheses (and iteratively refine them as you go)
 - Form an intuition which architecture would work well
   - CNN1D - good for signal for getting spatial and temporal footprint; basically window-based classification
   - CNN1D + LSTM - if you believe that previous window affects the next window, then it's a good choice; good for signal
