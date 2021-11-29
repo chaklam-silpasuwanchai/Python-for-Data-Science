@@ -21,7 +21,7 @@ Engineering - How?
 - First try a simple model (e.g., SVM)
   - Good for understanding your dataset 
 - Then try a simple neural network
-  - Good for debug
+  - Good for debugging
 - Try add more layers or ++**slowly**++ refine your neural network 
 - Monitor your progress
   - Loss plateau (if it is very steep or unstable, use these techniques)
