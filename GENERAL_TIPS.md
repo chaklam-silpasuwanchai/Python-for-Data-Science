@@ -9,8 +9,8 @@ Science -> Why?
 - Form an intuition which architecture would work well
   - CNN1D - good for signal for getting spatial and temporal footprint; basically window-based classification
   - CNN1D + LSTM - if you believe that previous window affects the next window, then it's a good choice; good for signal
-  - LSTM only - good for text, because previous text affects the next text; usually bad for signal, because each sample does not mean anything
-  - CNN2D - good for any images.  If you want to use LSTM for signal, windowed them first through CNN1D or manually.
+  - LSTM only - good for text, because previous text affects the next text; usually bad for signal, because each sample does not mean anything.  If you want to use LSTM for signal, windowed them first through CNN1D or manually.
+  - CNN2D - good for any images. For signal (audio, EEG, or any), first convert to some sort of spectrograms.
   - Attention - can be apply on top of CNN or LSTM or only attention; it's about correlations/similarity
 - Master/Ph.D. thesis asks a lot of whys!  Every decision you make is okay that you don't know whether it's right or wrong (because you are still learning), but you all MUST have a clear "why" in your mind (don't do it because Chaky teaches you or it's something new)
 
