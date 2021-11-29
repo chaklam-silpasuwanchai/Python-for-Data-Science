@@ -3,6 +3,7 @@ Data Science is hard! (and fun and very satisfying if you can do it AT THE END)
 Great data scientist excels in twofold: science and engineering.
 
 Science -> Why?
+- Respect domain knowledge
 - Visualize your datasets (know what is X and y)
 - Understand your datasets (where they are from, and how they are collected, and how they are potentially contaminated)
 - Form hypotheses (only one group did this)
