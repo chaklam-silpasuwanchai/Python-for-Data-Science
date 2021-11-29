@@ -7,7 +7,7 @@ Science -> Why?
 - Understand your datasets (where they are from, and how they are collected, and how they are potentially contaminated)
 - Form hypotheses (only one group did this)
 - Form an intuition which architecture would work well
-  - CNN1D - good for getting spatial and temporal footprint; basically window-based classification
+  - CNN1D - good for signal for getting spatial and temporal footprint; basically window-based classification
   - CNN1D + LSTM - if you believe that previous window affects the next window, then it's a good choice; good for signal
   - LSTM only - good for text, because previous text affects the next text; usually bad for signal, because each sample does not mean anything
   - CNN2D - good for any images
