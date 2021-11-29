@@ -33,4 +33,4 @@ Engineering - How?
 - Look for inspirations
   - Read papers; read 25 papers for good results, read 100 papers for breakthroughs
   - Look at github; many nice guys out there
-- Deep learning is a craft (not entirely 100% science), so it is very normal to have a trial and error, but there is always something call "intuition" behind.  TA and myself ALSO don't have answers to your questions because there is no definite science behind most of these deep stuffs.
+- Deep learning is still a craft (not entirely 100% science); researchers are still understanding it, so it is very normal that the formulation of the architecture is very much a trial and error process, but there is always something call "intuition" behind - read papers to learn these "tricks".  TA and myself don't always have answers to your questions because there is no definite science one-for-all solution behind most of these deep learning stuffs.
