@@ -14,7 +14,7 @@ Science -> Why?
   - Attention - can be apply on top of CNN or LSTM or only attention; it's about correlations/similarity
 - Master/Ph.D. thesis asks a lot of whys!  Every decision you make is okay that you don't know whether it's right or wrong (because you are still learning), but you all MUST have a clear "why" in your mind (don't do it because Chaky teaches you or it's something new)
 
-Engineering - how?
+Engineering - How?
 - First try a simple model (e.g., SVM)
 - Then try a simple neural network
 - Monitor your progress
