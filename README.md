@@ -10,7 +10,9 @@ Some resource worth mentioning:
   - For newbies who have trouble installing Python and other tools
 3. Prerequisities/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
-4. Syllabus/0. Course Introduction.ipynb
+4. Prerequisities/0 - Github
+  - As a data scientist, github is basically the most basic tool that you must know, so if you don't, please take a look
+5. Syllabus/0. Course Introduction.ipynb
   - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.  Each lab always end with the assessment and solution.
   
 I would also like to give credits to several githubs that I have revised to create this:
@@ -73,3 +75,8 @@ Focus on understanding the math + coding via coding from scratch
   - Padded Sequence
   - Convolutional Neural Network for NLP
   - Bidirectonal Stacked LSTM
+
+#### 3.3 EEG
+
+#### 3.4 Stock
+
