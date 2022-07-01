@@ -73,3 +73,7 @@ data
 ._.data
 **/data
 **/data
+
+# Pipenv
+.venv
+Pipfile.lock
