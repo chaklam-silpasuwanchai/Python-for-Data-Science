@@ -14,6 +14,7 @@ My setup consists of
 2. [Visual Studio Code](#2-vscode)
 3. [Docker Compose](#3-docker-compose)
 4. [Using Python](#4-using-python)
+5. [Ensure the migration](#5-ensure-migration)
 # <a name="0-whatNwhy"></a>0. What and Why
 ### What is Python? 
 [quote](https://www.w3schools.com/python/python_intro.asp)
@@ -272,3 +273,115 @@ Once we installed that, we can go to Docker menu, right-click on the target cont
 
 
 Now we have Python running. You are ready for this course.
+
+
+# <a name="5-ensure-migration"></a>5. Ensure the migration
+
+As said in the beginning, my goal is to have as clean as possible set up and easily migrating to new machine. For the past topics, we have achieved **clean set up**. When you want to work, you start Docker, start container, and code. When you are finished, you close everything and kill the **vmmem** process. No process is hogging your resources. Finally, when you are done with any project, you just delete Docker image and destroy containers. **Clean~~!!**
+
+Now, let's establish a plan when your current machine decides to give you up and stop working. What will you do?
+
+First, let's decompose the project into components. What does it need in order to develop a project?
+
+1. A machine: subject to break
+2. Python Environment: .Dockerfile, docker-compose.yml -> if you have these two files, you can always create a copy of your environment.
+3. Your code: ...
+4. Your data: ...
+
+## 1. Buy a new machine
+
+Surely, if the current machine is broken, get a new one. Set up Docker and VScode, and we are half way there.
+
+## 2. Python Environment
+
+Currently, our `.Dockerfile` has Python3. Along the course of development, you will surely need other library such as `numpy` and `pandas`. So, when we are migrating to another machine, we have to have these libraries too.
+
+Currently, our `.Dockerfile` looks like this.
+```
+FROM ubuntu:20.04
+WORKDIR /root/projects
+RUN apt update && apt upgrade -y
+RUN apt install python3 python3-pip -y
+CMD tail -f /dev/null
+```
+
+This means there are no libraries when we build and run the image. Sure, once the container is initiated, you can run `pip3 install` inside the container to get library and never destroy your container. But we are planning for **Machine is gone** scenario, so there are ways you can ensure your container will have the libraries it needs.
+
+### 2.1 Put it in the .Dockerfile
+
+You can specify the list of libraries you need in the `.Dockerfile`. This way, every time you build the image, it will always have the libraries. The only downside is you have to keep track of the libraries you are using in the project and put it in the `.Dockerfile`.
+
+```
+FROM ubuntu:20.04
+WORKDIR /root/projects
+RUN apt update && apt upgrade -y
+RUN apt install python3 python3-pip -y
+RUN pip3 install numpy
+RUN pip3 install pandas
+CMD tail -f /dev/null
+```
+
+### 2.2 Use virtual environment
+
+Virtual Environment is a concept of managing project-level environment. Before the existing of Docker, when you are developing multiple projects and want to ensure conflict free, you use virtual environment. We do not need it in the Docker since we should build one image for one project, but that does not mean there is no benefit of virtual environment when paring with container set up.
+
+When you use virtual environment, there will be a folder consisting of a copy of python and libraries. This is created per project, and you can always create a list of libraries you are using in each project.
+
+Base on the above information, you have two benefits.
+
+1. You can map the volume of that **copy of python and libraries** to the machine disk. Every time you create a new container, just map the volume, and you are good to go.
+2. You can save the **list of libraries** as a file and put it in the `.Dockerfile`.
+
+For this approach, I will have my `.Dockerfile` and `docker-compose.yml` as followings
+
+```
+FROM ubuntu:20.04
+WORKDIR /root/projects
+RUN apt update && apt upgrade -y
+RUN apt install python3 python3-pip -y
+RUN pip3 install pipenv
+CMD tail -f /dev/null
+```
+
+```
+version: '3.9'
+services:
+  python:
+    image: python
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    volumes:
+      - .venv/:/root/projects/.venv
+    environment:
+      # `pipenv` will create an environment in the working directory
+      - PIPENV_VENV_IN_PROJECT=1
+```
+
+There are couples of virtual environment module for Python. I use `pipenv` for its ability to create Pipfile (list of libraries) for me automatically.
+
+## 3. Your code
+
+If the machine is broken, you may be able to retrieve the code in the HDD/SSD. But, what if the HDD/SSD is also destroyed? Then you would need to have a second copy of your code somewhere else. Here we talk about backup. You will have multiple options and workflows to choose. You might save your code in the Google Drive, OneDrive, and other Drive from other cloud storage provider. You might have your own USB drive and remember to copy the code to the Drive. All of above are fine. However, I want to introduce you to Git and GitHub.
+
+Here is my analogy.
+- Youtube - GitHub
+- Channel - Repository
+- Videos - Files
+
+The two things are similar in managing/hosting/publishing a bunch of objects. However, the similarity end there, but it is good to know some term and compare to the known word.
+
+### GIT
+Git is a protocol. It solves the problem of *versioning*. When you have a project, you want to create one repository for that project. Within the repository, Git will **keep track of the changes** and save each change in a node and form a tree. Each node called `commit`. You can have multiple branches (tree) and merge branches to sync up the changes. Because it keeps track of the changes, you can always go back in history for referencing, or even revert the entire project the previous version (back to the future~~).
+
+### GitHub
+GitHub is a website that support Git protocol. You can sync up your local repository with the remote (repo in the GitHub) via the Git protocol. This enables easy collaborating with peers and backup.
+
+Now, if you use GitHub, you code + .Dockerfile + docker-compose.yml + Pipfile can all be saved to GitHub. This means if you have to migrate the project, it just a simple pull from the GitHub.
+
+Great, this mean no more manually backup? Sadly, no. GitHub has a limit of how big your file can be uploaded. (Git can keep track of any file size but GitHub disallowed the big file to be uploaded). Thus means you can not upload your Data to the GitHub and you need to manually back up yourself.
+
+## 4. Your data
+
+Well, manually back up your data. A database, dataset, and other binary files are usually discarded from GitHub repository. You can use OneDrive and Google Drive to back up these data.
+
