@@ -1,487 +1,274 @@
+# Goal
+In this course, we will be using Python as a learning language (of cause, this is Python for Data Science course). There are multiple ways you can get Python running in your machine. In this journey, I will show you my way to get Python running in your machine.
+
+My setup consists of
+1. Windows 11 home (Operating System)
+2. Docker Desktop + WSL2 (App)
+3. Visual Code Studio (Text Editor)
+4. GitHub Desktop
+
 # Table of Content
 
-0. [What and why?](#0-whatNwhy)
-1. [Python Installation](#1-installation)
-    1. [Linux](#1-1-Linux)
-    2. [Windows](#1-2-windows)
-    3. [MacOS](#1-3-macos)
-2. [Virtual Environment](#2-virtualEnvironment)
-    1. [Linux](#2-1-Linux)
-    2. [Windows](#2-2-windows)
-    3. [MacOS](#2-3-macos)
-    4. [Virtual Environment in action](#2-4-action)
-3. [Jupyter](#3-jupyter)
+0. [What and Why](#0-whatNwhy)
+1. [Docker](#1-docker)
+2. [Visual Studio Code](#2-vscode)
+3. [Docker Compose](#3-docker-compose)
+4. [Using Python](#4-using-python)
 # <a name="0-whatNwhy"></a>0. What and Why
 ### What is Python? 
 [quote](https://www.w3schools.com/python/python_intro.asp)
 
-Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.
-
-It is used for:
-
-- web development (server-side),
-- software development,
-- mathematics,
-- system scripting.
+> Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.
+> 
+> It is used for:
+> 
+> - web development (server-side),
+> - software development,
+> - mathematics,
+> - system scripting.
 
 ### Why uses Python?
 [quote](https://www.w3schools.com/python/python_intro.asp)
-- Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).
-- Python has a simple syntax similar to the English language.
-- Python has syntax that allows developers to write programs with fewer lines than some other programming languages.
-- Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.
-- Python can be treated in a procedural way, an object-orientated way or a - functional way.
+> - Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).
+> - Python has a simple syntax similar to the English language.
+> - Python has syntax that allows developers to write programs with fewer lines than some other programming languages.
+> - Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.
+> - Python can be treated in a procedural way, an object-orientated way or a - functional way.
 
 ### Before you start
-1. There are two major versions of Python which are Python2 and Python3. Note that when you call `python` in your terminal, you are referring to Python2. Instead, you need to explicit version 3 to call to Python3 (`python3`).
-2. There are different syntax between the two versions. We are recommended that you use version 3 throughout the course.
+1. There are two major versions of Python which are Python2 and Python3. Note that when you call `python` in your terminal, you are referring to Python2. Instead, you need to explicitly call `python3` to use Python version 3.
+2. There are some differences in syntax the two versions. We are recommended that you use version 3 throughout the course.
 
-# <a name="1-installation"></a>1. Python Installation
-## <a name="1-1-Linux"></a>1. For Linux user
+# <a name="1-docker"></a>1. Docker
+## Why?
+To me, I want my machine/PC/laptop to be as clean as possible because I use my laptop for my daily routine, games, hobbies, and works. In addition, how can I make sure that I can easily switch to a new machine and continue working.
 
-[Reference](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-an-Linux-20-04-server)
+Previously, my go-to solution was to use Virtual Machine (VM). It was a great experience in many aspects, especially, migrating and backing up works. However, VMs can not access hardware and this limitation alone is a dealbreaker for anyone who wants to work with Deep Learning.
 
-### Install via `apt`
-1. Open your terminal
-2. Update and Upgrade your current packages.
-```
-$ sudo apt update
-$ sudo apt upgrade
-```
-3. Install `python3`
-```
-$ sudo apt install python3
-```
-4. Verify that you have `python3`
-```
-$ python3 -V
-Python 3.8.2
-```
-5. You would need to install a package/library/module downloader. Similar to Python, there are `pip` for Python2 and `pip3` for Python3.
-```
-$ sudo apt install python3-pip
-```
-6. Verify thar you have `pip3`
-```
-$ pip3 -V
-pip 20.0.2 from /usr/lib/python3/dist-packages/pip (python 3.8)
-```
-7. Let's try to install your first package `numpy`
-```
-$ pip3 install numpy
-Collecting numpy
-  Using cached numpy-1.18.4-cp38-cp38-manylinux1_x86_64.whl (20.7 MB)
-Installing collected packages: numpy
-Successfully installed numpy-1.18.4
-```
-
-*Note that we are not using `sudo` in front of the command. When you are installing the Linux package, it is required to use root privilege here. Using `sudo` in front of any command to run the command as root. However, when you are installing the python package, you do not need to issue root privilege. In fact, doing so is not recommended due to the security concerned.*
+Now that Windows-subsystem-for-Linux (WSL2) is so great and convenient of managing environment of Docker, I never look back.
 
-8. Install development tools.
-```
-$ sudo apt install -y build-essential libssl-dev libffi-dev python3-dev
-```
-
-## <a name="1-2-windows"></a>2. For Windows user
+## Installation
 
-### Installer from python.org
-1. Download 64-bit installer [link](https://www.python.org/ftp/python/3.8.3/python-3.8.3-amd64.exe). You need 64-bit version so that you can run PyTorch.
+The easiest to get a Docker running in your machine is through Docker Desktop. <a href="https://www.docker.com/products/docker-desktop/">link</a>
 
-2. Check `Add Python 3.8 to PATH` option and `Install Now`.
+Note that for `Linux` users, the last time I tried Docker Desktop on Linux, it was not working properly. It might have change. I don't know.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/python-windows-install-64.png)
+Note for `MacOS` users, good luck. (I am a Windows enthusiast)
 
-3. Veryify that `python` is installed with `pip` using your `cmd`
-```
-C:>python -V
-Python 3.8.3
+Now, for `Windows` users.
+*This guide assumes you have a fresh installation of Windows*
 
-C:>pip -V
-pip 20.1.1 from c:\users\<username>\appdata\local\programs\python\python38-32\lib\site-packages\pip (python 3.8)
-```
-4. Let's try to install your first package `numpy`
+1. Install the `Docker Desktop` from <a href="https://www.docker.com/products/docker-desktop/">link</a>
+2. Once the installation is done you may need to restart your OS.
+3. Upon a startup, the `Docker Desktop` will launch up. It won't successfully to do so because you do not have WSL2. In the error box, there will be a link to *WSL2 installation guide* from Microsoft. Now, run this command to install WSL2 `wsl --install` in your cmd/terminal.
+4. Check the result with this command.
 ```
-C:>pip install numpy
-Collecting numpy
-  Downloading https://files.pythonhosted.org/packages/8a/52/daf6f4b7fd1499c153cb25ff84f87421598d95e5bb5b760585d2c0263773/numpy-1.18.5-cp38-cp38-win32.whl (10.8MB)
-     |████████████████████████████████| 10.8MB 6.4MB/s
-Installing collected packages: numpy
-Successfully installed numpy-1.18.5
+> wsl -l -v
+  NAME                   STATE           VERSION
+* docker-desktop-data    Running         2
+  docker-desktop         Running         2
 ```
-
-## <a name="1-3-macos"></a>3. For MacOS user
-
-Some caution: Do not use the pre-installed python from MacOS.  That's python2.  Also avoid installing Anaconda, or python from python.org.  You will then have many different versions of python.  I highly recommended using terminal and Brew to install python3 which is the cleanest way.  If you have already installed Anaconda or python from python.org, uninstall them using any uninstaller tool.  When you type <code>$ python</code> follow by TAB, the TAB should only show python2.7 which is pre-installed.  Do not delete this version or your MacOS will not work.  You can also check <code>$ python3 -V</code> and should return nothing.  You can also try <code>$ which python python3</code> to see which python you are using.  For advanced users who are maintaining lots of python version, you may want to set alias in bash_profile to set which one you are using, or of course, you can set up virtual environments using a particular python version. Phew...
+This command shows you the kernel and version. If you are not going to use WSL anymore, this is all we need.
+5. Launch `Docker Desktop` again.
 
-1.  First off, (strangley), MacOS decided to include a Command Line Tool app inside Xcode.  Thus we have to first install Xcode from the App store.  Then, to install the Command Line Tool app, we perform
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-desktop.png)
 
-```
-$ xcode-select --install
-```
-
-2. Install homebrew.  (this is like apt-get in Linux)
+Tips:
+If you take a look in the `Task Manager`, there is a process named `Vmmem` running. This is the Docker process. Once the `Docker Desktop` is started, `Vmmem` will always be there. To fully shut the Docker, use `wsl --shutdown` command in the cmd/terminal. 
 
-```
-$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vmmem.png)
 
-3. Once the installation process is complete, we’ll put the Homebrew directory at the top of the PATH environment variable. This will ensure that Homebrew installations will be called over the tools that Mac OS X may select automatically that could run counter to the development environment we’re creating.
 
-```
-$ nano ~/.bash_profile
-```
-Open the file and write the following:
+# <a name="2-vscode"></a>2. Visual Studio Code (vscode)
 
-```
-export PATH=/usr/local/bin:$PATH
-```
+Code is simply a text. This means you can write a code with any text editor in the world, including Notepad. That is doable until you have to write a bigger project with many module plus libraries. At this stage, having some help would be nice. 
 
-Activate the source
-```
-source ~/.bash_profile
-```
+Here come the Integrated Development Environment (IDE), 
 
-4.  Check whether Homebrew was successfully installed:
+[quote](https://en.wikipedia.org/wiki/Integrated_development_environment)
+> a software application that provides comprehensive facilities to computer programmers for software development. An IDE normally consists of at least a source code editor, build automation tools and a debugger. Some IDEs, such as NetBeans and Eclipse, contain the necessary compiler, interpreter, or both; others, such as SharpDevelop and Lazarus, do not.
+>
+> The boundary between an IDE and other parts of the broader software development environment is not well-defined; sometimes a version control system or various tools to simplify the construction of a graphical user interface (GUI) are integrated. Many modern IDEs also have a class browser, an object browser, and a class hierarchy diagram for use in object-oriented software development.
 
-```
-$ brew doctor
-```
+In my words, in order to enjoy developing code more, a good code developing software is a must, otherwise, you will spend more time fixing basic bug than creating a magic.
 
-5. Install python3
+Basic bug??
 
-```
-$ brew install python3
-```
+Yes, basic bug, such as syntax error, wrong variable name, undefined blah blah blah. basic bugs.
 
-Along with Python 3, Homebrew will install pip, setuptools and wheel.
+These are avoidable or, at least, can be mitigated by using a better editor.
 
+In Python, you can use `PyCharm` <a href="https://www.jetbrains.com/pycharm/">link</a> for the ultimate Python experience. However, this only support Python. As I told you earlier, I like to keep my machine as clean as possible. Therefore, if I want to write other languages, I will have to install another IDE for that.
 
-6.  Try install packages by replacing <package_name> with, e.g., numpy
+Enter `Visual Studio Code` <a href="https://code.visualstudio.com/">link</a>. To define VScode, it is difficult. 
 
-```
-$ pip3 install <package_name>
-```
+[quote](https://en.wikipedia.org/wiki/Visual_Studio_Code)
+>Visual Studio Code, also commonly referred to as VS Code,[9] is a source-code editor made by Microsoft for Windows, Linux and macOS.[10] Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded Git. Users can change the theme, keyboard shortcuts, preferences, and install extensions that add additional functionality.
+>
+>In the Stack Overflow 2021 Developer Survey, Visual Studio Code was ranked the most popular developer environment tool, with 70% of 82,000 respondents reporting that they use it.[11]
 
+In my words, it is a versatile code editor. It used to be lightweight, and it will somehow is when compare to other IDE. With an extension, it can adapt to any languages. And VScode can feel like a complete IDE with its ability to integrate with Terminal and Docker.
 
-=====================================================================
+Enough said, download the VScode now. https://code.visualstudio.com/
 
+# <a name="3-docker-compose"></a>3. Docker Compose
 
+Let's get back to Docker because we only install it without learning about it.
 
-# <a name="1-virtualEnvironment"></a>2. Virtual Environment
-*For beginners, you can ignore this part but we recommend you to try it out for good practice.*
+Do we really need to understand Docker before we can use it? No. Should we? Yes.
 
-> Virtual Environment is used to manage Python packages for different projects. Using virtualenv allows you to avoid installing Python packages globally which could break system tools or other projects. --- [python.org](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#:~:text=virtualenv%20is%20used%20to%20manage,system%20tools%20or%20other%20projects.)
+## What is Docker?
 
-Remember that a package that we download using `pip3` is written by a human. There may be updates to the package for various reasons. Updating the package may cause your projects to crash due to conflicting in the newer version of the library.
+[quote](https://en.wikipedia.org/wiki/Docker_(software))
+>Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. The service has both free and premium tiers. The software that hosts the containers is called Docker Engine. It was first started in 2013 and is developed by Docker, Inc. Wikipedia
 
-To overcome this problem (and many more reasons to do the following), we will set up a Virtual Environment.
+The key is `virtualization`. It is a form of simulation just like VM but instead of emulating the entire machine, it is only simulating kernels. In a more basic word, I can have Ubuntu 20.04, 18.04, 16.04, CentOS, Redhat, and MacOS running on my Windows. It does not end here, instead of running just a bare bone OS, it can also be pre-installed application. Thus mean, I can run MySQL, PostgreSQL, Reddis, Java, Python, C#, C++, Golang, ... in just a matter of minutes. **Using Docker will shorten installation steps and ensure that anyone who use the same image will have the same environment.**
 
-## <a name="2-1-Linux"></a> 1. For Linux User
+Wow, that simply the same benefit as VM but no, Docker is not VM as it does not emulate hardware. Instead, Docker sees all of your hardware. That is why we can use GPU.
 
-1. Our environment manager of choice is `venv`
-```
-$ sudo apt install python3-venv
-```
-2. I will set up my first environment for this course names pythonDSAI.
-```
-$ python3 -m venv pythonDSAI
-```
-3. It should create a directory that names after the environment name.
-```
-$ ls pythonDSAI/
-bin  include  lib  lib64  pyvenv.cfg  share
-```
-4. To activate the environment, you have to call the `activate` file under your newly created environment folder using `source` command. 
-```
-$ source pythonDSAI/bin/activate
-(pythonDSAI) $ 
-```
-5. To exit the environment, simply type `deactivate` from anywhere.
-```
-(pythonDSAI) $ deactivate
-$ 
-```
+In Docker, `Docker image` and `Container` are the two confusing words for newcomer. To understand this, let's think how did we install Windows on a fresh machine.
 
-## <a name="2-2-windows"></a> 2. For Windows User
+1. Download ISO and create bootable USB
+2. Install Windows 
+3. Configure and install software we want to use
+4. If the PC crash, we restart it.
+5. If the PC is broken, we reinstall it and repeat from step 2.
 
-1. Download `virtualenv` via `pip install`
-```
-C:>pip install virtualenv
-```
-2. I will set up my first environment for this course names pythonDSAI.
-```
-C:>python -m virtualenv pythonDSAI
-```
-3. It should create a directory that names after the environment name.
-```
-C:>dir pythonDSAI
- Volume in drive C has no label.
- Volume Serial Number is 569F-FEDC
+For Docker, if you want to have Ubuntu 20.04 we do the followings:
 
- Directory of C:\Users\<username>\pythonDSAI
+1. Download Docker Image of Ubuntu 20.04.
+2. Run the image. Thus, we have a container that runs Ubuntu 20.04. 
+3. We install the software we wanted to use.
+4. If we stop the container, we can start is to resume use it.
+5. If we destroy the container, we have to recreate it thus repeat from step 2.
 
-06/04/2020  11:41 AM    <DIR>          .
-06/04/2020  11:41 AM    <DIR>          ..
-06/04/2020  11:41 AM                42 .gitignore
-06/04/2020  11:41 AM    <DIR>          Lib
-06/04/2020  11:41 AM               429 pyvenv.cfg
-06/04/2020  11:41 AM    <DIR>          Scripts
-               2 File(s)            471 bytes
-               4 Dir(s)  42,885,738,496 bytes free
-```
-4. To activate the environment, you have to call the `activate` file under your newly created environment folder. 
-```
-C:>pythonDSAI\Scripts\activate
-(pythonDSAI) C:>
-```
-5. To exit the environment, simply type `deactivate` from anywhere.
-```
-(pythonDSAI) C:>deactivate
-C:>
-```
+There for, `Docker Image` is what we want to start with and `Container` is an instance of what we start. This means you can create multiple Ubuntu 20.04 containers that consist of different software for different purpose, hence reduce the chance of library conflict.
 
-## <a name="2-3-macos"></a> 2. For MacOS User
+The main different between Docker and VM is the user see a container as a process not an instance. Therefore, the container is deletable. In fact, a container is not expecting to exist forever and is not a thing you have to manage. This causes one feature of Docker, we can always build a new image, and we are expecting to do so.
 
-1. First, create a place to place your programming enviornments.  It can be anyname, here my name is Environments
+Here is the summary and simple workflow of Docker.
 
 ```
-$ mkdir Environments
-$ cd Environments
+Base Image -> *customize* *build* -> My Image -> *run* -> container
 ```
 
-2. Inside the directory, create enviroment with any name, here I use the name pythonDSAI
-```
-$ python -m venv pythonDSAI
-```
+For our purpose, we want to use Python and some library like `numpy` and `pandas` on Ubuntu 20.04, then here is what we will do next.
 
-3. To activate
 ```
-$ source pythonDSAI/bin/activate
+Ubuntu 20.04 -> *customize* *build* -> Python Image-> *run* -> Python Container
 ```
 
-4.  Inside the environment, you can use only python and pip, instead of python3 and pip3 since the programming environment depends on the version that you use to create.  Try verify by
-```
-$ python -V
-$ pip -V
-```
+Sure you can find the base image with Python3 but for the sake of knowledge, we will proceed with my plan.
 
-5. You probably want to upgrade your pip
-```
-pip install --upgrade pip
-```
 
-6.  You also would be lazy to type source....activate everytime.  Thus, you can open
+## Base Image
+To find what you want to start with, you have to search from the <a href="https://hub.docker.com/">Docker Hub</a>. Simply search for Ubuntu and find what you want. Here is the <a href="https://hub.docker.com/_/ubuntu">Ubuntu official Image</a>. 
 
-```
-$ nano ~/.bash_profile
-```
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-hub-ubuntu.png)
 
-Type (make sure to change /path/to/)
+If you just want an Ubuntu image, 
 ```
-alias dsai="source /path/to/Environments/pythonDSAI/bin/activate"
+docker pull ubuntu
 ```
 
-To make sure bash_profile is always sourced when you open terminal, open
-
-```
-$ nano ~/.zshrc
-```
+But we want a specific version of Ubuntu. Click `Tags`.
 
-Type
-```
-source /path/to/.bash_profile
-```
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/docker-hub-ubuntu-tags.png)
 
-7.  Now try to close and open your terminal again.  Simply type
 ```
-$ dsai
+docker pull ubuntu:<tag>
 ```
-It should now activate your env.
-
-================================================================================
-
-
-## <a name="2-3-action"></a> Virtual Environment in action
-
-We have just installed `numpy` under our global environment. For the best practice, we want our `numpy` to be exist under the environment we wanted.
-1. Check that `numpy` is installed.
 
-#### Linux
+Tag is a section to specific the version and to find what version we want, we have to do some research and read the Description of each image provider. For our goal, we will use the following command.
 ```
-$ pip3 list | grep numpy
-numpy         1.18.4 
-``` 
-*`pip3 list` is a command for listing all the installed packages. `grep` is a command that filters out the text and shows the line that has `numpy` in it. The vertical bar `|` is commonly referred to as a "pipe". It is used to pipe one command into another. That is, it directs the output from the first command into the input for the second command.*
-
-
-#### Windows
+docker pull ubuntu:20.04
 ```
-C:>pip list | find /I "numpy"
-numpy              1.18.4
-``` 
-*`pip list` is a command for listing all the installed packages. `find /I` is a command that filters out the text and shows the line that has `numpy` in it. The vertical bar `|` is commonly referred to as a "pipe". It is used to pipe one command into another. That is, it directs the output from the first command into the input for the second command.*
-
 
-#### MacOS
-```
-$ pip3 list | grep numpy
-numpy         1.18.4 
-```
+Okay, so run the command? What is this `pull` command anyway?
 
+Pull is to download the image in to your computer, but you don't really need to do that since Docker, when build/run, will `pull` automatically when the image is not found on the machine.
 
-2. remove `numpy` from global
+For now, we remember the image name and continue with customizing.
 
-#### Linux
-```
-$ pip3 uninstall numpy
-```
+## Custom Image
 
-#### Windows
-```
-$ pip uninstall numpy
-```
+To customize the image we have to create a `.Dockerfile` file. 
 
-#### MacOS
 ```
-$ pip3 uninstall numpy
+FROM ubuntu:20.04
+WORKDIR /root/projects
+RUN apt update && apt upgrade -y
+RUN apt install python3 python3-pip -y
+CMD tail -f /dev/null
 ```
 
-3. Activate your target environment.
+`FROM` will use the `ubuntu:20.04` as a base image. `WORKDIR` is like `cd`, but it will also create a folder when the path is not exist. `RUN` will execute the command in terminal. And, `CMD` is what will the container do (remember that it is designed to be a process for one purpose).
 
-#### Linux
-```
-$ source pythonDSAI/bin/activate
-(pythonDSAI) $
-```
+## Build 
 
-#### Windows
+We can build the image from `.Dockerfile` using the following command.
 ```
-C:>pythonDSAI\Scripts\activate
-(pythonDSAI) C:>
+docker build .
 ```
 
-#### MacOS
-```
-$ source pythonDSAI/bin/activate
-(pythonDSAI) $
-```
+## Create container
 
-4. Install and verify the `numpy` package only exist in the target environment.
+Once we have the image that we want to use, we will create a container (which is an instance of the image) using the following command.
 
-#### Linux
 ```
-(pythonDSAI) $ pip3 install numpy
-(pythonDSAI) $ pip3 list | grep numpy
-numpy         1.18.4 
-(pythonDSAI) $ deactivate
-$ pip3 list | grep numpy
-$
+docker run IMAGE[:TAG|@DIGEST]
 ```
 
-#### Windows
-```
-(pythonDSAI) C:>pip install numpy
-(pythonDSAI) C:>pip list | find /I "numpy"
-numpy      1.18.4
-(pythonDSAI) C:>deactivate
-C:>pip list | find /I "numpy"
-C:>
-```
+and now we have the container.
 
-#### MacOS
-```
-(pythonDSAI) $ pip3 install numpy
-(pythonDSAI) $ pip3 list | grep numpy
-numpy         1.18.4 
-(pythonDSAI) $ deactivate
-$ pip3 list | grep numpy
-```
 
-5. Here are the list of library you may need for the next four lectures.
-``` 
-numpy torch torchvision matplotlib pandas seaborn pandas_datareader sklearn
-```
-For Linux and Windows user, you will need to install PyTorch using below command
-```
-pip install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
-```
+## Tedious?
+One this that does not appeal to me is a bunch of command I have to remember in order to create a container. We have not yet open the port, mapping volume, assign hardware, and limit the resources. That are a bunch of option we have to specify in the `run` command.
 
-# <a name="3-jupyter"></a> 3. Jupyter
-[Reference](https://jupyter.org/install)
+Now we will be more civilize and use `Docker Compose`
 
-You will need a text editor to write a code. While there are many great python editors out there, we will use Jupyter for this course to simplify the process of checking your works. 
+## Docker Compose
+In a nutshell, docker-compose help you to craft your `run` command in the `yml` format. In addition, the docker-compose helps to manage multiple containers when your app consists of multiple services. 
 
-You can install Jupyter using `pip3` (Linux) and `pip` (Windows) in our global python.
+In our case, we will use it in place of `docker run` command.
 
-1. Install Jupyter via `pip`
+Create a file `docker-compose.yml`
 
-#### Linux
 ```
-$ pip3 install jupyter
+version: '3.9'
+services:
+  python: # service/container name
+    image: python # image name
+    build: 
+      context: .
+      dockerfile: .Dockerfile
 ```
-If you receive the following message.
-
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-path.png)
 
-You have to add `PATH` of the executable scripts.
+Now, normally you will have to use `docker-compose up blah blah` to run the service. Here, I will use `VScode` to start the service. Before that, go to `Extension` and install `docker` extension into your `VScode`.
 
-```
-$ echo 'export PATH="~/.local/bin:$PATH"' >> ~/.bashrc
-$ source ~/.bashrc
-```
-#### Windows
-```
-C:> pip install jupyter
-```
-#### MacOS
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-docker-ext.png)
 
-```
-$ pip3 install jupyter
-```
+Once you installed this extension, find your `docker-compose.yml` file, right click, and `Compose up`
 
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-docker-compose-up.png)
 
-2. To start jupyter simply type the following command. Your current folder will be the workspace.
-```
-jupyter notebook
-```
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-home.png)
+## Summary
+Now, all we have to do to get the container is
 
-3. Notice that when you try to create a new file there is a `python3` option. This option will run the code using the global environment. Therefore, you will need to add pythonDSAI into the jupyter before we can use it.
+1. create `.Dockerfile`
+2. create `docker-compose.yml`
+3. Compose up
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new.png)  
 
-Activate pythonDSAI environment and add the environment into jupyter
+# <a name="4-using-python"></a>4. Using Python
 
-#### Linux
-```
-$ source pythonDSAI/bin/activate
-(pythonDSAI) $ pip3 install ipykernel
-(pythonDSAI) $ python3 -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
-Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/kernels/pythondsai
-(pythonDSAI) $ deactivate
-$
-```
+Now, we want to access the Python in the container using VSCode. Luckily, things are already simplified. We have to install `Remote - Containers` extension in VSCode.
 
-#### Windows
-```
-C:>pythonDSAI\Scripts\activate
-(pythonDSAI) C:>pip install ipykernel
-(pythonDSAI) C:>python -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
-Installed kernelspec pythonDSAI in C:\Users\<username>\AppData\Roaming\jupyter\kernels\pythondsai
-(pythonDSAI) C:>deactivate
-C:>
-```
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-remote-ext.png)
 
-#### MacOS
-```
-$ source pythonDSAI/bin/activate
-(pythonDSAI) $ pip3 install ipykernel
-(pythonDSAI) $ python3 -m ipykernel install --user --name pythonDSAI --display-name "pythonDSAI"
-Installed kernelspec pythonDSAI in /home/<your username>/.local/share/jupyter/kernels/pythondsai
-(pythonDSAI) $ deactivate
-```
+Once we installed that, we can go to Docker menu, right-click on the target container, and select `Attach Visual Studio Code`.
 
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/vscode-remote-container.png)
 
-4. Restart the jupyter notebook and you should have `pythonDSAI` environment.
 
-![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/jupyter-new-pythonDSAI.png)
+Now we have Python running. You are ready for this course.
