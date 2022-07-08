@@ -69,7 +69,7 @@ Focus on getting started.
   - Convolutional Neural Network
   - Long Short-Term Memoy
   
-#### 4 Deployment 
+### 4 Deployment 
   - Django and FastAPI
   - Github Action
   - Prometheus
