@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  python:
+    image: python
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    volumes:
+      - ./:/root/projects
+    environment:
+      # `pipenv` will create an environment in the working directory
+      - PIPENV_VENV_IN_PROJECT=1
+    deploy:
+      resources:
+        limits:
+          # Limit is the maximun resource the container can have.
+          # number of cores this container can use (can be 0.5 means half core)
+          cpus: '4'
+          # maximun RAM this container can use
+          memory: '16G'
+        reservations:
+          # Reserves is a minimun resource the container will always have.
+          # cpus: '4'
+          # memory: '4G'
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
