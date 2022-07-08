@@ -38,7 +38,6 @@ Focus on getting started.
   - Sklearn
   
 ### 2. Traditional Machine Learning
-Focus on understanding the math + coding via coding from scratch
 
 #### 2.1 Regression
   - Linear regression
@@ -68,15 +67,10 @@ Focus on understanding the math + coding via coding from scratch
   - Linear Regression
   - Logistic Regression
   - Convolutional Neural Network
+  - Long Short-Term Memoy
   
-#### 3.2 NLP 
-  - Recurrent Neural Network
-  - Word Embeddings
-  - Padded Sequence
-  - Convolutional Neural Network for NLP
-  - Bidirectonal Stacked LSTM
-
-#### 3.3 EEG
-
-#### 3.4 Stock
-
+#### 4 Deployment 
+  - Django and FastAPI
+  - Github Action
+  - Prometheus
+  - Wandb
