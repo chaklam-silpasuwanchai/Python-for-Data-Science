@@ -379,9 +379,267 @@ GitHub is a website that support Git protocol. You can sync up your local reposi
 
 Now, if you use GitHub, you code + .Dockerfile + docker-compose.yml + Pipfile can all be saved to GitHub. This means if you have to migrate the project, it just a simple pull from the GitHub.
 
-Great, this mean no more manually backup? Sadly, no. GitHub has a limit of how big your file can be uploaded. (Git can keep track of any file size but GitHub disallowed the big file to be uploaded). Thus means you can not upload your Data to the GitHub and you need to manually back up yourself.
+Great, this mean no more manually backup? Sadly, no. GitHub has a limit of how big your file can be uploaded. (Git can keep track of any file size, but GitHub disallowed the big file to be uploaded). Thus means you can not upload your Data to the GitHub and you need to manually back up yourself.
 
 ## 4. Your data
 
 Well, manually back up your data. A database, dataset, and other binary files are usually discarded from GitHub repository. You can use OneDrive and Google Drive to back up these data.
 
+## Execution
+
+Here our plan is to put everything into GitHub except some confidential/big data. Our repository will look like this.
+
+```
+repository
+|--projects/
+    |--.venv/
+    |--Dataset/
+        |--Train/
+            |--data1
+            |--data2
+        |--Test/
+            |--data3
+            |--data4
+    |--**folders**/
+    |--**files**
+    |--Pipfile
+    |--Pipfile.lock 
+|--.Dockerfile
+|--docker-compose.yml
+```
+
+When we build the image, it will map the volume `./projects` into the container so that we have access to the source code (you can change to name of the folder). Here we update the `docker-compose.yml` to do that.
+
+```
+version: '3.9'
+services:
+  python:
+    image: python
+    build: 
+      context: .
+      dockerfile: .Dockerfile
+    volumes:
+      - ./projects/:/root/projects
+    environment:
+      # `pipenv` will create an environment in the working directory
+      - PIPENV_VENV_IN_PROJECT=1
+```
+
+Now, how do we initiate Git in our local machine?, and sync this repository with GitHub? If you have never used Git before, my suggestion would be to install GitHub Desktop. What I am about to show you will be hated by Git enthusiast around the world and many hardcore Git users will always say "use the command line is a must" which is true in some situations (also applied to Docker). Eventually, you should learn how to use Git in the command line/terminal environment. However, for all people who are not familiar with terminal environment, it usually scared them of. Moreover, in a daily basis, I would spend my time writing code rather than recalling the command for Git's routine. Not to mention that I have to install Git for Windows to have the Git command in my machine.
+
+## GitHub Desktop
+
+Visit <a href="https://desktop.github.com/">GitHub Desktop</a> and download the installer according to your operating system. After all the installation. You will have to have a GitHub account (well, we are about to upload and use GitHub service). Therefore, visit <a href="https://github.com/">GitHub</a> and create yourself an account. Here I would suggest you to create your own personal account using your **personal email address**. Nowadays, GitHub has become another way for the company to know you. Then, to get **GitHub Pro** plan, you have to bind AIT email address once you have created your account.
+
+Once you have an account and login to it in the GitHub Desktop, click menu **File > New repository**
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-new-repo.png)
+
+- **Name**: The repository name. This is the same name as your folder if you already created one.
+- **Description**: Can leave as blank.
+- **Local path**: This is where your repository/folder exist. Read more below.
+- **Initialize this repository with a README**: Well, it will just create README.md. If you already have one, you can ignore.
+- **Git ignore**: If you want to exclude anything of the repository, you put it in the `.gitignore`. Here, you select a template base on the programming language you about to use which normally have the same list of ignored files. 
+- **License**: By default, your project is publicly available. To allow anyone else to use your project legally, you need to specify a term of use through the license file. Right now you can ignore this, but in the future, you should take sometime to choose the license you want to use.
+
+Now, about the local path. GitHub Desktop does not expect you to point the destination to the already exist project/folder. Thus, it will create a new folder if the folder/path is not exist. For us and our situation, we already have a folder with our code on it. Therefore, we have to be more specific. For my case, I have all of my projects/code in `D:\MyProjects`. Inside this folder, I have a bunch of folders for different project I am/was working on. My new repository is here to. Here is the structure of my machine.
+
+```
+D:\
+|--**MyOtherFolders**/
+|--MyProjects/
+  |--**Project1**/
+  |--**Project2**/
+  |--repository <<<< My new project
+      |--projects/
+          |--.venv/
+          |--Dataset/
+              |--Train/
+                  |--data1
+                  |--data2
+              |--Test/
+                  |--data3
+                  |--data4
+          |--**folders**/
+          |--**files**
+          |--Pipfile
+          |--Pipfile.lock 
+      |--.Dockerfile
+      |--docker-compose.yml
+  |--**Project3**/
+  |--**Project4**/
+|--**MyOtherFiles**
+```
+
+Now, I should name my `repository`. I will name it `DSAI-python` to reflex that this is the repository for this course.
+
+```
+D:\
+|--**MyOtherFolders**/
+|--MyProjects/
+  |--**Project1**/
+  |--**Project2**/
+  |--DSAI-python <<<< My new project
+      |--projects/
+          |--.venv/
+          |--Dataset/
+              |--Train/
+                  |--data1
+                  |--data2
+              |--Test/
+                  |--data3
+                  |--data4
+          |--**folders**/
+          |--**files**
+          |--Pipfile
+          |--Pipfile.lock 
+      |--.Dockerfile
+      |--docker-compose.yml
+  |--**Project3**/
+  |--**Project4**/
+|--**MyOtherFiles**
+```
+
+In the menu of create new repository, the `Name` is `DSAI-python` and `Local path` is `D:\MyProjects`. I will leave other fields as default. Then, `Create repository`.
+
+Back to my `DSAI-python`, I will have one new folder on the root path. If you can not see it, you have to enable Hidden folder.
+
+```
+DSAI-python
+|--.git/ <<<<< new
+|--projects/
+    |--.venv/
+    |--Dataset/
+        |--Train/
+            |--data1
+            |--data2
+        |--Test/
+            |--data3
+            |--data4
+    |--**folders**/
+    |--**files**
+    |--Pipfile
+    |--Pipfile.lock 
+|--.Dockerfile
+|--.gitattributes
+|--docker-compose.yml
+```
+
+## Gitignore
+
+If we go back to the GitHub Desktop, we will notice that GitHub Desktop already commit one change with message "Initial commit" and in the commit, our `Dataset` has already *added* into the repository. For my purpose, we want to exclude this from the repository.
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-init-commit.png)
+
+
+To fix this, we have to revert the commit and exclude the `Dataset` from the git using `.gitignore`.
+
+1. Revert the `Initial commit` by right-click on the commit and select `Undo commit...`
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-undo-commit.png)
+
+2. Create a file `.gitignore` in the root path.
+
+```
+DSAI-python
+|--.git/
+|--projects/
+    |--.venv/
+    |--Dataset/
+        |--Train/
+            |--data1
+            |--data2
+        |--Test/
+            |--data3
+            |--data4
+    |--**folders**/
+    |--**files**
+    |--Pipfile
+    |--Pipfile.lock 
+|--.Dockerfile
+|--.gitattributes
+|--.gitignore
+|--docker-compose.yml
+```
+
+3. Add `Dataset` into the `.gitignore` and save the file
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-ignore.png)
+
+Notice that all files in the Dataset folder is gone from the changes tab.
+
+4. Commit to **main**
+
+Now, Git will ignore the entire of Dataset folder even the assistance of the folder. This causes one thing, when you publish this to GitHub, there will be no sign of Dataset folder. Thus, when anyone clones the repository, they will have to create a folder themselves. 
+
+Okay, if I want to keep my folder but not my files, I have to change the `.gitignore` from folder name to filename, is not it? No.
+
+Even though you have spent your time listing all the files you want to exclude, if, in the end, the folder is empty, it won't appear in the repository. **Any folder that is empty will not appear in the repository**. Thus, if you wish to have a folder in your repository, you need to have at least one file. In the convention of Git, we put `.keep`, `.keeps` or `.gitkeep` in any folder we want to keep it existence in the repository. Then, we add `!.keep`, `!.keeps`, or `!.gitkeep` in the last line of `.gitignore` to exclude the ignoring of the file. Finally, we change from ignoring `Dataset` folder to ignoring files in the folder using `Dataset/*`
+
+Here is my `.gitignore`
+
+```
+Dataset/*
+!.keep
+```
+
+Here is my folder structure
+
+```
+DSAI-python
+|--.git/
+|--projects/
+    |--.venv/
+    |--Dataset/
+        |--Train/
+            |--data1
+            |--data2
+        |--Test/
+            |--data3
+            |--data4
+        |--.keep
+    |--**folders**/
+    |--**files**
+    |--Pipfile
+    |--Pipfile.lock 
+|--.Dockerfile
+|--.gitattributes
+|--.gitignore
+|--docker-compose.yml
+```
+
+Note that this will not work with any file that is already added to repository. You can only ignore files that is not included in the repository only. If you make a mistake and want to ignore a file after many commits, there is a way and I will leave it to you to figure it out.
+
+## Publishing the repository
+
+Now you have a repository running in your local machine. You can make changes and create commits or make a new branch and merge as many as you desire. When you are ready, you can publish this repository to GitHub. To do that, click `Publish repository`.
+
+![alt](https://raw.githubusercontent.com/chaklam-silpasuwanchai/Python-for-DS-AI/master/.0%20-%20installation_image/github-desktop-new-repo.png)
+
+Here you can change the name of the repository (this will not affect the folder name in your local machine) and an option whether to make this repository a private or not. Once done choosing, just click `Publish repository`. Done~~!!
+
+## Syncing and Collaborating
+
+Now, you have two repositories (local and remote/GitHub), and you wish that both repositories will look the same. To achieve you have to push and pull. Here is a diagram.
+
+![alt](https://greenido.files.wordpress.com/2013/07/git-local-remote.png?w=696&h=570)
+
+Every time you are committing, you are only interacting with the local repository. To sync the local repository, you have to `push` the changes/commits to the remote (GitHub) one. 
+
+Now, if you have a second machine or your friend are also working on the same project using the same repository, that means there is another local repository in that another machine. Are you confusing? Let's imagine you have a PDF file you want to share with your friend. You choose to upload the PDF to Google Drive and share the link to your friend (`push`). Your friends see the file exist in the Google Drive. They will have to download in to their machine (`pull`). In this context, I map to the following analogy.
+
+- PDF - commit
+- You machine - Local Repository
+- Google Drive - GitHub/Remote Repository
+- Upload PDF - Push
+- Your friend machine - Another local Repository
+- Download PDF - Pull
+
+`fetch` is to check for new commits but not push or pull.
+
+In summary, you will have to push and pull consistently to make sure that both repositories are in sync.
+
+## What else?
+
+There is no rule in GitHub. There is only `main` branch and other branches. The meaning of branch is up to you and your team.
+
+Conflict is not an error but rather Git is asking you to help decide what you want. Remember that Git is only tracking changes of files. Conflict happens because in one line of one file is changed from both persons (commit). Conflict can and will happen if more than one person are working on the same file. If you want to avoid this, you have to plan your project structure out and breakdown your code into multiple files and each team member working on different files. Anyhow, it just my suggestion and my best practice. You can always adapt and make your own practice.
