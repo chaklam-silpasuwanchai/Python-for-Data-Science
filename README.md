@@ -13,6 +13,8 @@ Some resource worth mentioning:
 4. Syllabus/0. Course Introduction.ipynb
   - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.  Each lab always end with the assessment and solution.
   
+5. I have put many folder titled "further-study" or "exercise".  These resources are especially aimed for those who have completed the basic materials of the course, and would like to further improve your knowledge.  The only reason I could not teach is due to time constraint of the course.
+  
 I would also like to give credits to several githubs that I have revised to create this:
 
 - https://github.com/SethHWeidman/DLFS_code
