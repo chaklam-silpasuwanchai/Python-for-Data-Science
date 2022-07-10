@@ -37,27 +37,10 @@ Focus on getting started.
   
 ### 2. Traditional Machine Learning
 
-#### 2.1 Regression
-  - Linear regression
-  - Polynomial regression
-  - Regularization
-  
-#### 2.2 Classification
-  - Logistic regression
-  - Naive Gaussian
-  - Support Vector Machines
-  - Decision Trees
-  - K-Nearest Neighbors
-  - Bagging
-  - Random Forests
-  - Boosting - AdaBoost, Gradient Boosting
-  
-#### 2.3 Clustering
-  - K-means
-  - Gaussian Mixture Models
-
-#### 2.4 Dimensionality Reduction
-  - Principal Component Analysis
+- Regression
+- Classification
+- Clustering
+- Dimensionality Reduction
 
 ### 3. Deep Learning
 
