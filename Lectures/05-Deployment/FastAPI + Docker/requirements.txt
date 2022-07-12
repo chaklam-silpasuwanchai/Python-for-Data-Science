@@ -1,5 +1,5 @@
 fastapi==0.78.0
-numpy==1.19.4
+numpy==1.23.1
 scikit_learn==0.24.2
 starlette==0.19.1
 uvicorn==0.18.2
