@@ -1,11 +1,5 @@
 ## Deployment: Fast API + Docker
 
-### Source
-
-- https://towardsdatascience.com/deploying-iris-classifications-with-fastapi-and-docker-7c9b83fdec3a
-- https://medium.com/analytics-vidhya/serve-a-machine-learning-model-using-sklearn-fastapi-and-docker-85aabf96729b
-
-
 ### Prerequisites
 
 - Install Docker
@@ -247,3 +241,7 @@ Go to `192.168.99.100:8080/docs`.  Now you can do the same thing.
 
 In the next lab, let's deploy to **Heroku**, so everyone in the world can use your API.  Also let's try setup **CI/CD with github actions**.
 
+#### References
+
+- https://towardsdatascience.com/deploying-iris-classifications-with-fastapi-and-docker-7c9b83fdec3a
+- https://medium.com/analytics-vidhya/serve-a-machine-learning-model-using-sklearn-fastapi-and-docker-85aabf96729b
