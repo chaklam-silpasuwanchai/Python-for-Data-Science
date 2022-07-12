@@ -1,5 +1,15 @@
 ## Deployment: Fast API + Docker
 
+Once we developed our ML model, we have to make it accessible by the public or at least the applications that require the prediction results.
+
+To do that, we need to create an API in which the outside can easily access.  Particularly, what we want to achieve is:
+
+Our **ML model**  --access via--> **API** (e.g., FastAPI)  --access by--> **consumers** (e.g., websites, mobile, dashboard, IoT devices, etc).
+
+This process of making your model accessible is called **deployment into production**.
+
+So let's get started.
+
 ### Prerequisites
 
 - Install Docker
