@@ -3,7 +3,7 @@
 ### Prerequisites
 
 - Install Docker
-
+- Install FastAPI (pip install fastapi)
 
 ### API
 
