@@ -47,11 +47,11 @@ The directory structure is as follows:
     Dockerfile
     requirements.txt
 
-#### 1. Create a new directory called `ml`. 
+### 1. Create a new directory called `ml`. 
 
 This directory will contain all the code related to machine learning.
 
-#### 2. Train a simple classifier
+### 2. Train a simple classifier
 
 For simplicity, let’s use Logistic Regression as our algorithm.
 
@@ -83,7 +83,7 @@ Create a `train.py` in your <code>ml</code> directory.  Put this code below:
 
 Note that this model is very simple...e.g., no scaling/splitting/gridsearch.  This is intended so we can quickly jump to deployment...
 
-#### 3. Define a placeholder classifier
+### 3. Define a placeholder classifier
 
 Let's create a placeholder variable to hold the model, when we load, so we can reuse.
 
@@ -92,7 +92,7 @@ Create a `classifier.py` under the `ml` folder with the following code:
     clf = None
 
 
-#### 4. Define the schema
+### 4. Define the schema
 
 FastAPI has an automatic data validation, if we provide it with the `BaseModel` definition.
 
@@ -111,7 +111,7 @@ Create a directory `schema`, and create `iris.py` inside with the following code
                         min_items=4,
                         max_items=4)]
 
-#### 5. Define the router
+### 5. Define the router
 
 Here we gonna define how url is routed.  You can see this as the *main()* file.
 
@@ -145,7 +145,7 @@ Create `app.py` in the root level.  In this script, we define the app and specif
         return  {"prediction": prediction,
                 "probability": proba}
 
-#### 6. Try run the uvicorn server to see how the API is
+### 6. Try run the uvicorn server to see how the API is
 
 We are actually done with the API.  Yes!  It's that simple.
 
@@ -160,7 +160,7 @@ You can also try only three values, and see the errors.
 ![swagger UI](swagger.png)
 
 
-#### 7. Include Dependencies
+### 7. Include Dependencies
 
 Let's prepare ourselve containerize our app.  But before that, let's create a file containing all our dependencies.
 
@@ -178,7 +178,7 @@ My requirements.txt looks like this:
 
 If you don't know which version you are using, try `pip list`.
 
-#### 8. Dockerfile
+### 8. Dockerfile
 
 We also need to create a Dockerfile which will contain the commands required to assemble the image. Once deployed, other applications will be able to consume from our iris classifier to make cool inferences about flowers.
 
@@ -203,7 +203,7 @@ Our Dockerfile concludes with a `CMD` which is used to set the default command t
 
 If you don't understand very well, don't worry!  There are many online materials how to make Dockerfile. :-)
 
-#### 9. Build and run the container
+### 9. Build and run the container
 
 We are almost there!!
 
@@ -231,7 +231,7 @@ Check whether your image is running
 
 This exposes the application to the port 8080. Running the container also kicks off the default command we set earlier — which effectively starts up the app!
 
-#### 10. Use the API
+### 10. Use the API
 
 So let's try our API.
 
