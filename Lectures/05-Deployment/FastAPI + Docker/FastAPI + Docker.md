@@ -3,6 +3,7 @@
 ### Source
 
 - https://towardsdatascience.com/deploying-iris-classifications-with-fastapi-and-docker-7c9b83fdec3a
+- https://medium.com/analytics-vidhya/serve-a-machine-learning-model-using-sklearn-fastapi-and-docker-85aabf96729b
 
 
 ### Prerequisites
@@ -12,27 +13,20 @@
 
 ### API
 
-It’s short for Application Programming Interface. It’s simply an intermediary between two independent applications that communicate with each other.
-
-If you’re a developer and want to make your application available for other developers to use and integrate with, you build an API that acts as an entry point to your app. 
-
-The developers will therefore have to communicate with this API through HTTP requests such as GET, POST, PUT, DELETE to consume and interact with your service.
+You build an API that acts as an entry point to your app, through HTTP requests such as GET, POST, PUT, DELETE.
 
 ### FastAPI
 
 FastAPI is the most popular go-to framework for building robust and high-performance APIs that scale in production environments.
 
-FastAPI has gained a lot of popularity lately and saw a huge increase in user adoption among web developers but also data scientists and ML engineers.
-
 - Simple and easy to use
-- Does not come with a webserver; Serving the API is **uvicorn**’s responsibility which is a good choice given that uvicorn is a lightning-fast ASGI server implementation, using uvloop and httptools.
+- Does not come with a webserver; commonly use **uvicorn** which is a lightning-fast ASGI server.
 - FastAPI + uvicorn is one of the fastest
 - Unlike Django or Flask, it supports asynchronous requests
 - Does not come with a view component;  often used together with React/Vue/Angular/HTML for frontend
-- Enforces variable typing, which encorces validation at runtime
-- Allows data validation of parameters (e.g., maximum length)
+- Allows data validation(e.g., maximum length, type)
 - Supports error messages
-- automatic doc generation by going to localhost/docs
+- Default UI like Postman
 
 In this example, we will only be using two HTTP methods:
 
@@ -41,103 +35,150 @@ In this example, we will only be using two HTTP methods:
 
 ### Let's get started
 
-#### 1. Create a new directory called `iris`. 
+The directory structure is as follows:
 
-This directory will contain all the code used for building the application.
+    ml
+    +-- classifier.py
+    +-- train.py
+    +-- iris_v1.joblib
+    schema
+    +-- iris.py
+    app.py
+    Dockerfile
+    requirements.txt
+
+#### 1. Create a new directory called `ml`. 
+
+This directory will contain all the code related to machine learning.
 
 #### 2. Train a simple classifier
 
-For simplicity, let’s use Logistic Regression as our algorithm. We can use sklearn to supply the Iris dataset and to do the modeling.
-I structured the classifier as a class for readability. `train_model` is used to train the classifier and classify is used to classify new observations following this format:
+For simplicity, let’s use Logistic Regression as our algorithm.
 
-`{'sepal_w': <sepal width>, 'sepal_l': <sepal length>, 'petal_w': <petal_width>, 'petal_l': <petal length>}`
+Create a `train.py` in your <code>ml</code> directory.  Put this code below:
 
-Create a <code>model.py</code> in your <code>iris</code> directory.  Put this code below:
-
-    import numpy as np
-    from sklearn.datasets import load_iris
+    from joblib import dump
+    from sklearn import datasets
+    from sklearn.pipeline import Pipeline
+    from sklearn.preprocessing import StandardScaler
     from sklearn.linear_model import LogisticRegression
 
-    class IrisClassifier:
-        def __init__(self):
-            self.X, self.y = load_iris(return_X_y=True)
-            self.clf = self.train_model()
-            self.iris_type = {
-                0: 'setosa',
-                1: 'versicolor',
-                2: 'virginica'
-            }
+    # import dataset
+    iris = datasets.load_iris(return_X_y=True)
+    X = iris[0]
+    y = iris[1]
 
-        def train_model(self) -> LogisticRegression:
-            return LogisticRegression(solver='lbfgs',
-                                    max_iter=1000,
-                                    multi_class='multinomial').fit(self.X, self.y)
+    # train
+    pipeline_dict = [('scaling', StandardScaler()),
+                ('clf', LogisticRegression())]
 
-        def classify(self, features: dict):
-            X = [features['sepal_l'], features['sepal_w'], features['petal_l'], features['petal_w']]
-            prediction = self.clf.predict_proba([X])
-            return {'class': self.iris_type[np.argmax(prediction)],
-                    'probability': round(max(prediction[0]), 2)}
+    pipeline = Pipeline(pipeline_dict)
+
+    pipeline.fit(X, y)
+
+    # save model for deployment
+    dump(pipeline, 'iris_v1.joblib')
+
+
 
 Note that this model is very simple...e.g., no scaling/splitting/gridsearch.  This is intended so we can quickly jump to deployment...
 
-#### 3. Define the router
+#### 3. Define a placeholder classifier
 
-Inside the <code>iris</code>, create a directory <code>routers</code>.   Inside the directory, create <code>router.py</code>.  This routes <code>/classify</code> to its corresponding function. 
+Let's create a placeholder variable to hold the model, when we load, so we can reuse.
 
-    # for serving endpoints
-    from fastapi import APIRouter
+Create a `classifier.py` under the `ml` folder with the following code:
 
-    #for accepting JSON
-    from starlette.responses import JSONResponse
+    clf = None
 
-    #import the class
-    from iris.iris_classifier import IrisClassifier
 
-    router = APIRouter()
+#### 4. Define the schema
 
-    @router.post('/classify')
-    def classify_iris(features: dict):
-        clf = IrisClassifier()
-        return JSONResponse(clf.classify(features))
+FastAPI has an automatic data validation, if we provide it with the `BaseModel` definition.
 
-#### 4. Define the app
+Create a directory `schema`, and create `iris.py` inside with the following code.
 
-Create `app.py` in the same level as `iris_classifier.py`.  In this script, we define the app and specify the router(s).
+    from pydantic import BaseModel, conlist
+    from typing import List
 
-We also define a `healthcheck` function.  The function returns the operational status of the app based on the request status code.
+    # Without this file won't break your app, but it's good practice
 
-    from fastapi import FastAPI
-    from iris.router import iris_router
+    #basically create a schema describing Iris
+    #mainly for the purpose of automatic data validation
+    class Iris(BaseModel):    
+        #conlist helps imposing list with constraints
+        data: List[conlist(float, 
+                        min_items=4,
+                        max_items=4)]
 
-    app = FastAPI()
-    app.include_router(iris_router.router, prefix='/iris')
+#### 5. Define the router
 
-    @app.get('/healthcheck', status_code=200)
-    async def healthcheck():
-        return 'Iris classifier working well.'
+Here we gonna define how url is routed.  You can see this as the *main()* file.
 
-#### 5. Include Dependencies
+Create `app.py` in the root level.  In this script, we define the app and specify the router(s).
 
-Your current structure should look like this:
 
-    iris
-    +-- router
-    |   +-- iris_router.py
-    +-- app.py
-    +-- iris_classifier.py
+    #our classifier
+    import ml.classifier as clf
+    from fastapi import FastAPI, Body
+    from joblib import load
 
-Go one directory up to create a `requirements.txt` file to specify all of the dependencies required to build this app.
+    #Iris data structure
+    from schema.iris import Iris
+
+    #define the fastapi
+    app = FastAPI(title="Iris Prediction API",
+                description="API for Iris Prediction",
+                version="1.0")
+
+    #when the app start, load the model
+    @app.on_event('startup')
+    async def load_model():
+        clf.model = load('ml/iris_v1.joblib')
+        
+    #when post event happens to /predict
+    @app.post('/predict')
+    async def get_prediction(iris:Iris):
+        data = dict(iris)['data']
+        prediction = clf.model.predict(data).tolist()
+        proba = clf.model.predict_proba(data).tolist() 
+        return  {"prediction": prediction,
+                "probability": proba}
+
+#### 6. Try run the uvicorn server to see how the API is
+
+We are actually done with the API.  Yes!  It's that simple.
+
+Run the server by:
+
+    uvicorn app:app --port 5000
+
+Go to `http://127.0.0.1:5000/docs`.  Then try input some values and see the response by clicking **Try it out**.
+
+You can also try only three values, and see the errors.
+
+![swagger UI](swagger.png)
+
+
+#### 7. Include Dependencies
+
+Let's prepare ourselve containerize our app.  But before that, let's create a file containing all our dependencies.
+
+At root, create a `requirements.txt` file to specify all of the dependencies required to build this app.
 
 My requirements.txt looks like this:
 
     fastapi==0.78.0
-    numpy==1.19.4
+    numpy==1.23.1
     scikit_learn==0.24.2
     starlette==0.19.1
     uvicorn==0.18.2
+    joblib==0.17.0
+    pydantic==1.9.1
 
-#### 6. Dockerfile
+If you don't know which version you are using, try `pip list`.
+
+#### 8. Dockerfile
 
 We also need to create a Dockerfile which will contain the commands required to assemble the image. Once deployed, other applications will be able to consume from our iris classifier to make cool inferences about flowers.
 
@@ -145,8 +186,7 @@ We also need to create a Dockerfile which will contain the commands required to 
 
     RUN apt-get update && apt-get install -y python3-dev build-essential
 
-    RUN mkdir -p /usr/src/iris
-    WORKDIR /usr/src/iris
+    WORKDIR /app
 
     COPY requirements.txt .
     RUN pip3 install -r requirements.txt
@@ -161,19 +201,9 @@ The first line defines the Docker base image for our application. The `python:3.
 
 Our Dockerfile concludes with a `CMD` which is used to set the default command to `uvicorn --host 0.0.0.0 --port 5000 iris.app:app`. The default command is executed when we run the container.
 
-If you don't understand very well, don't worry!  There is many help online teaching you how to make Dockerfile. :-)
+If you don't understand very well, don't worry!  There are many online materials how to make Dockerfile. :-)
 
-Now your file structure should be:
-
-    iris
-        +-- router
-        |   +-- iris_router.py
-        +-- app.py
-        +-- iris_classifier.py
-    requirements.txt
-    Dockerfile
-
-#### 7. Build and run the container
+#### 9. Build and run the container
 
 We are almost there!!
 
@@ -201,7 +231,7 @@ Check whether your image is running
 
 This exposes the application to the port 8080. Running the container also kicks off the default command we set earlier — which effectively starts up the app!
 
-#### 8. Use the API
+#### 10. Use the API
 
 So let's try our API.
 
@@ -211,24 +241,9 @@ First, I have to check my docker-machine ip by doing
 
 Here, my ip is 192.168.99.100
 
-First, let's try our healthcheck 
-
-    curl 'http://192.168.99.100:8080/healthcheck'
-
-To get an inference, use this request. The JSON string after -d is the model input passed to classify.
-
-    curl 'http://192.168.99.100:8080/iris/classify' -X POST -H 'Content-Type: application/json' -d '{"sepal_l": 5, "sepal_w": 2, "petal_l": 3, "petal_w": 4}'
-
-You will get:
-
-    {"class":"versicolor","probability":0.57}
-
-Don't worry.  Go to `localhost:8080/docs` to check out the Swagger UI. This makes testing requests so much easier.
-
-![swagger UI](swagger.png)
-
-You can also try with Postman, which is also easier.
-
-In the next lab, let's create a simple **web interface**, and try deploy to **Heroku**.  Also setup **CI/CD with github actions**.
+Go to `192.168.99.100:8080/docs`.  Now you can do the same thing.
 
 ### Congrats!!
+
+In the next lab, let's deploy to **Heroku**, so everyone in the world can use your API.  Also let's try setup **CI/CD with github actions**.
+
