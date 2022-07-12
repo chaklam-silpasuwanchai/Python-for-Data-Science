@@ -61,28 +61,29 @@ For simplicity, let’s use Logistic Regression as our algorithm.
 
 Create a `train.py` in your <code>ml</code> directory.  Put this code below:
 
-    from joblib import dump
-    from sklearn import datasets
-    from sklearn.pipeline import Pipeline
-    from sklearn.preprocessing import StandardScaler
-    from sklearn.linear_model import LogisticRegression
+```python
+from joblib import dump
+from sklearn import datasets
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import LogisticRegression
 
-    # import dataset
-    iris = datasets.load_iris(return_X_y=True)
-    X = iris[0]
-    y = iris[1]
+# import dataset
+iris = datasets.load_iris(return_X_y=True)
+X = iris[0]
+y = iris[1]
 
-    # train
-    pipeline_dict = [('scaling', StandardScaler()),
-                ('clf', LogisticRegression())]
+# train
+pipeline_dict = [('scaling', StandardScaler()),
+            ('clf', LogisticRegression())]
 
-    pipeline = Pipeline(pipeline_dict)
+pipeline = Pipeline(pipeline_dict)
 
-    pipeline.fit(X, y)
+pipeline.fit(X, y)
 
-    # save model for deployment
-    dump(pipeline, 'iris_v1.joblib')
-
+# save model for deployment
+dump(pipeline, 'iris_v1.joblib')
+```
 
 
 Note that this model is very simple...e.g., no scaling/splitting/gridsearch.  This is intended so we can quickly jump to deployment...
@@ -93,8 +94,9 @@ Let's create a placeholder variable to hold the model, when we load, so we can r
 
 Create a `classifier.py` under the `ml` folder with the following code:
 
-    clf = None
-
+```python
+clf = None
+```
 
 ### 4. Define the schema
 
@@ -102,18 +104,20 @@ FastAPI has an automatic data validation, if we provide it with the `BaseModel` 
 
 Create a directory `schema`, and create `iris.py` inside with the following code.
 
-    from pydantic import BaseModel, conlist
-    from typing import List
+```python
+from pydantic import BaseModel, conlist
+from typing import List
 
-    # Without this file won't break your app, but it's good practice
+# Without this file won't break your app, but it's good practice
 
-    #basically create a schema describing Iris
-    #mainly for the purpose of automatic data validation
-    class Iris(BaseModel):    
-        #conlist helps imposing list with constraints
-        data: List[conlist(float, 
-                        min_items=4,
-                        max_items=4)]
+#basically create a schema describing Iris
+#mainly for the purpose of automatic data validation
+class Iris(BaseModel):    
+    #conlist helps imposing list with constraints
+    data: List[conlist(float, 
+                    min_items=4,
+                    max_items=4)]
+```
 
 ### 5. Define the router
 
@@ -121,33 +125,34 @@ Here we gonna define how url is routed.  You can see this as the *main()* file.
 
 Create `app.py` in the root level.  In this script, we define the app and specify the router(s).
 
+```python
+#our classifier
+import ml.classifier as clf
+from fastapi import FastAPI, Body
+from joblib import load
 
-    #our classifier
-    import ml.classifier as clf
-    from fastapi import FastAPI, Body
-    from joblib import load
+#Iris data structure
+from schema.iris import Iris
 
-    #Iris data structure
-    from schema.iris import Iris
+#define the fastapi
+app = FastAPI(title="Iris Prediction API",
+            description="API for Iris Prediction",
+            version="1.0")
 
-    #define the fastapi
-    app = FastAPI(title="Iris Prediction API",
-                description="API for Iris Prediction",
-                version="1.0")
-
-    #when the app start, load the model
-    @app.on_event('startup')
-    async def load_model():
-        clf.model = load('ml/iris_v1.joblib')
-        
-    #when post event happens to /predict
-    @app.post('/predict')
-    async def get_prediction(iris:Iris):
-        data = dict(iris)['data']
-        prediction = clf.model.predict(data).tolist()
-        proba = clf.model.predict_proba(data).tolist() 
-        return  {"prediction": prediction,
-                "probability": proba}
+#when the app start, load the model
+@app.on_event('startup')
+async def load_model():
+    clf.model = load('ml/iris_v1.joblib')
+    
+#when post event happens to /predict
+@app.post('/predict')
+async def get_prediction(iris:Iris):
+    data = dict(iris)['data']
+    prediction = clf.model.predict(data).tolist()
+    proba = clf.model.predict_proba(data).tolist() 
+    return  {"prediction": prediction,
+            "probability": proba}
+```
 
 ### 6. Try run the uvicorn server to see how the API is
 
@@ -186,20 +191,22 @@ If you don't know which version you are using, try `pip list`.
 
 We also need to create a Dockerfile which will contain the commands required to assemble the image. Once deployed, other applications will be able to consume from our iris classifier to make cool inferences about flowers.
 
-    FROM python:3.8-slim-buster
+```dockerfile
+FROM python:3.8-slim-buster
 
-    RUN apt-get update && apt-get install -y python3-dev build-essential
+RUN apt-get update && apt-get install -y python3-dev build-essential
 
-    WORKDIR /app
+WORKDIR /app
 
-    COPY requirements.txt .
-    RUN pip3 install -r requirements.txt
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
 
-    COPY . .
+COPY . .
 
-    EXPOSE 5000
+EXPOSE 5000
 
-    CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5000", "iris.app:app"]
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5000", "iris.app:app"]
+```
 
 The first line defines the Docker base image for our application. The `python:3.8-slim-buster` is a popular image — it’s lightweight and very quick to build. 
 
