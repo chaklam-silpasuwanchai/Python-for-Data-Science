@@ -53,7 +53,7 @@ Focus on getting started.
   - Long Short-Term Memoy
   
 ### 4 Deployment 
-  - Django and FastAPI
-  - Github Action
-  - Prometheus
+  - FastAPI + Docker
+  - Heroku + Github Action
+  - Prometheus + Graphana
   - Wandb
