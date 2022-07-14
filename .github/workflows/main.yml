@@ -14,3 +14,6 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           usedocker: true
           appdir: "06-Deployment/FastAPI+Docker"
+          justlogin: true
+      - run: |
+          heroku container:login
