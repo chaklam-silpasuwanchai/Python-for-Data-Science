@@ -204,14 +204,14 @@ RUN pip3 install -r requirements.txt
 
 COPY . .
 
-EXPOSE 5000
+EXPOSE 5000 
 
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5000", "iris.app:app"]
+CMD uvicorn --host 0.0.0.0 --port 5000 app:app
 ```
 
 The first line defines the Docker base image for our application. The `python:3.8-slim-buster` is a popular image — it’s lightweight and very quick to build. 
 
-Our Dockerfile concludes with a `CMD` which is used to set the default command to `uvicorn --host 0.0.0.0 --port 5000 iris.app:app`. The default command is executed when we run the container.
+Our Dockerfile concludes with a `CMD` which is used to set the default command to `uvicorn --host 0.0.0.0 --port 5000 app:app`. The default command is executed when we run the container.
 
 If you don't understand very well, don't worry!  There are many online materials how to make Dockerfile. :-)
 
