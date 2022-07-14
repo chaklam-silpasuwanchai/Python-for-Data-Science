@@ -100,35 +100,68 @@ You will see the changes.
 
 Now, this process can be automated, which is called **continuous integration** or **CI/CD**.  The idea is that whenever we push the code, it must run certain steps for us, such as test and deploy procedure for us.  There are two popular CI/CD frameworks which are **Jenkin** and **Github action**.  Since **Github action** has received a lot of interest lately, we shall explore it.
 
+First, create a directory `.github` on the root level (at the same level as the Dockerfile)  (Note that the name cannot change because github action looks for this folder)
 
-github action
+    mkdir .github
 
-https://github.com/marketplace/actions/deploy-to-heroku
+Then inside .github, create a directory called `workflows`
+
+    cd .github
+    mkdir workflows
+
+Inside the workflows, create the `main.yml` file
+
+    cd workflows
+    touch main.yml
+
+Inside this, we shall define our github action, i.e., everything we commit and push new code, it should help us automatically deploy to heroku.  The code is:
+
+```yml
+name: Deploy
+
+on:
+push:
+    branches:
+    - master
+
+jobs:
+build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: akhileshns/heroku-deploy@v3.12.12 #this is the action
+        with:
+        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
+        heroku_email: ${{ secrets.HEROKU_EMAIL }}
+        usedocker: true #<- Deploy with docker :-)
+        appdir: "06-Deployment/FastAPI+Docker" # <- This will point to the subdirectroy folder in your project
+```
+
+Go to your github repository, go to `Settings > Secrets`, set three variables `HEROKU_API_KEY`, `HEROKU_APP_NAME`, `HEROKU_EMAIL`.
 
 
-    name: Deploy
+For the api key, use `heroku authorizations:create` for production apps, use `heroku auth:token` for development (you can do this anywhere in the terminal).
 
-    on:
-    push:
-        branches:
-        - master
+If you want to further tweak, see https://github.com/marketplace/actions/deploy-to-heroku
 
-    jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - uses: akhileshns/heroku-deploy@v3.12.12 #this is the action
-            with:
-            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-            heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
-            heroku_email: "YOUR EMAIL"
-            usedocker: true #<- Deploy with docker :-)
-            appdir: "api" # <- This will point to the subdirectroy folder in your project
+To see that it is working, we can try change some of our API code like this:
 
+```python
+@app.get("/")
+async def root():
+    return {"message": "We change something"}
+```
 
+Then you can push and commit as usual.  
 
+Then try to go to `http://[app-name].herokuapp.com` to see the change.
 
+### Congrats!
+
+Now we don't have to worry about running tedious commands.  Everything we push, these commands will be run.  What you can do more is to incorporate test in the github action.
+
+In the next lab, let's try explore some monitoring tools.
 
 
 
