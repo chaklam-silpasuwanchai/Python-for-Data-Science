@@ -27,7 +27,7 @@ async def get_prediction(iris:Iris):
     
 @app.get("/")
 async def root():
-    return {"message": "Hello World"}
+    return {"message": "Some change"}
     
 
 
