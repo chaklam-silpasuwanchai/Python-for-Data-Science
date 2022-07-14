@@ -6,6 +6,11 @@ Let's deploy our app online.  We gonna use **Heroku** which is free but also sup
 
 Make sure you have a completely separate repository holding the app that we did last time.
 
+Here is the separate repository of mine:
+
+https://github.com/chaklam-silpasuwanchai/iris-heroku-example
+
+
 ### Install heroku cli 
 (You can do it in any directory)
 
@@ -30,6 +35,8 @@ Login to your heroku
 
     heroku create [app-name]
 
+To check that you have really created the app, you can go to heroku website and check.
+
 ![app](app.png)
 
 ### Push and deploy
@@ -40,9 +47,7 @@ You can check the PORT variable via
 
     heroku run printenv -a [app-name]
 
-For more details, read:  https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
-
-So revise your `Dockerfile` to:
+Revise your `Dockerfile` to:
 
 ```dockerfile
 FROM python:3.8-slim-buster
@@ -61,7 +66,7 @@ COPY . .
 CMD uvicorn --host 0.0.0.0 --port $PORT app:app
 ```
 
-Now, let's push to heroku container register.  Go to your directory where the Dockerfile is:
+Now, let's push to heroku container register.  Go to the level where the Dockerfile is:
 
     heroku container:push web -a [app-name]
 
@@ -77,7 +82,7 @@ Now go to
 
 If you want to change the domain name, just simply purchase a domain name and link with it.
 
-(Note: if your app is not running, check the logs:  `heroku logs -a iris-ait`)
+(Note: if your app is not running, check the logs:  `heroku logs -a [app-name]`)
 
 ### Changing app
 
@@ -118,7 +123,7 @@ Inside the workflows, create the `main.yml` file
     cd workflows
     touch main.yml
 
-Inside this, we shall define our github action, i.e., everything we commit and push new code, it should help us automatically deploy to heroku.  The code is:
+Inside this, we shall define our github action, i.e., everytime we commit and push new code, it should help us automatically deploy to heroku.  The code is:
 
 ```yml
 name: Deploy
@@ -177,7 +182,3 @@ Then try to go to `http://[app-name].herokuapp.com` to see the change.
 Now we don't have to worry about running tedious commands.  Everything we push, these commands will be run.  What you can do more is to incorporate test in the github action.
 
 In the next lab, let's try explore some monitoring tools.
-
-
-
-
