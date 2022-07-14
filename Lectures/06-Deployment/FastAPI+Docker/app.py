@@ -24,10 +24,5 @@ async def get_prediction(iris:Iris):
     proba = clf.model.predict_proba(data).tolist() 
     return  {"prediction": prediction,
             "probability": proba}
-    
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-    
 
 
