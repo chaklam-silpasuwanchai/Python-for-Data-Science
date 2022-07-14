@@ -17,3 +17,6 @@ jobs:
           justlogin: true
       - run: |
           heroku container:login
+          heroku container:push web -a iris-ait
+          heroku container:release web -a iris-ait
+          
