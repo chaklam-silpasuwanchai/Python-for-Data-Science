@@ -30,11 +30,38 @@ Login to your heroku
 
 ### Push and deploy
 
-Go to your previous directory where the Dockerfile is
+Before we do anything, we have to revise the port variable in `Dockerfile`.  This is because heroku has its own port.
+
+You can check the PORT variable via
+
+    heroku run printenv -a [app-name]
+
+For more details, read:  https://devcenter.heroku.com/articles/container-registry-and-runtime#dockerfile-commands-and-runtime
+
+So revise your `Dockerfile` to:
+
+```dockerfile
+FROM python:3.8-slim-buster
+
+RUN apt-get update && apt-get install -y python3-dev build-essential
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip3 install -r requirements.txt
+
+COPY . .
+
+# EXPOSE 5000 <--we don't need this
+
+CMD uvicorn --host 0.0.0.0 --port $PORT app:app
+```
+
+Now, let's push to heroku container register.  Go to your directory where the Dockerfile is:
 
     heroku container:push web -a [app-name]
 
-This will take some time.
+(Note:  The first time I did this, it freezes.  Not sure why, but once I restarted my mac, it works fine.)
 
 Then let's release to the public
 
@@ -42,9 +69,11 @@ Then let's release to the public
 
 Now go to 
 
-    http://[app-name].herokuapp.com
+    http://[app-name].herokuapp.com/docs
 
 If you want to change the domain name, just simply purchase a domain name and link with it.
+
+(Note: if your app is not running, check the logs:  `heroku logs -a iris-ait`)
 
 ### Changing app
 
@@ -56,10 +85,8 @@ async def root():
     return {"message": "Hello World"}
 ```
 
-Again, we just repeat the four steps:
+Again, we just repeat the two steps:
 
-    heroku login
-    heroku container:login
     heroku container:push web -a [app-name]
     heroku container:release web -a [app-name]    
 

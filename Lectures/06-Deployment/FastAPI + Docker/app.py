@@ -25,5 +25,9 @@ async def get_prediction(iris:Iris):
     return  {"prediction": prediction,
             "probability": proba}
     
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+    
 
 
