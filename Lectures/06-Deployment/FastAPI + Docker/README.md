@@ -14,6 +14,7 @@ So let's get started.
 
 - Install Docker
 - Install FastAPI (pip install fastapi)
+- Install uvicorn (pip install uvicorn)
 
 ### API
 

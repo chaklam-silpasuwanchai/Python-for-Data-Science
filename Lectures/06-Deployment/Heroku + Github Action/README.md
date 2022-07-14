@@ -1,264 +1,108 @@
 ## Deployment: Heroku + Github Action
 
-Once we developed our ML model, we have to make it accessible by the public or at least the applications that require the prediction results.
+Let's deploy our app online.  We gonna use **Heroku** which is free but also support paid version.
 
-To do that, we need to create an API in which the outside can easily access.  Particularly, what we want to achieve is:
+### Install heroku cli 
+(You can do it in any directory)
 
->Our **ML model**  --access via--> **API** (e.g., FastAPI)  --access by--> **consumers** (e.g., websites, mobile, dashboard, IoT devices, etc).
+    brew tap heroku/brew && brew install heroku
 
-This process of making your model accessible is called **deployment into production**.
+If you are using other os, please refer to 
 
-So let's get started.
+https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
 
-### Prerequisites
+### Login 
 
-- Install Docker
-- Install FastAPI (pip install fastapi)
+Login to your heroku
 
-### API
+(You can do it in any directory)
 
-You build an API that acts as an entry point to your app, through HTTP requests such as GET, POST, PUT, DELETE.
+    heroku login
+    heroku container:login
 
-### FastAPI
+### Create heroku app
 
-FastAPI is the most popular go-to framework for building robust and high-performance APIs that scale in production environments.
+(You can do it in any directory; app name can be anything)
 
-- Simple and easy to use
-- Does not come with a webserver; commonly use **uvicorn** which is a lightning-fast ASGI server.
-- FastAPI + uvicorn is one of the fastest
-- Unlike Django or Flask, it supports asynchronous requests
-- Does not come with a view component;  often used together with React/Vue/Angular/HTML for frontend
-- Allows data validation(e.g., maximum length, type)
-- Supports error messages
-- Default UI like Postman
+    heroku create [app-name]
 
-In this example, we will only be using two HTTP methods:
+![app](app.png)
 
-- <code>GET</code>: used to retrieve data from the application
-- <code>POST</code>: used to send data to the application (required for inference)
+### Push and deploy
 
-### Let's get started
+Go to your previous directory where the Dockerfile is
 
-The directory structure is as follows:
+    heroku container:push web -a [app-name]
 
-    ml
-    +-- classifier.py
-    +-- train.py
-    +-- iris_v1.joblib
-    schema
-    +-- iris.py
-    app.py
-    Dockerfile
-    requirements.txt
+This will take some time.
 
-### 1. Create a new directory called `ml`. 
+Then let's release to the public
 
-This directory will contain all the code related to machine learning.
+    heroku container:release web -a [app-name]    
 
-### 2. Train a simple classifier
+Now go to 
 
-For simplicity, let’s use Logistic Regression as our algorithm.
+    http://[app-name].herokuapp.com
 
-Create a `train.py` in your <code>ml</code> directory.  Put this code below:
+If you want to change the domain name, just simply purchase a domain name and link with it.
+
+### Changing app
+
+Now let's try add something in the `app.py` and see whether the changes propagate
 
 ```python
-from joblib import dump
-from sklearn import datasets
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-
-# import dataset
-iris = datasets.load_iris(return_X_y=True)
-X = iris[0]
-y = iris[1]
-
-# train
-pipeline_dict = [('scaling', StandardScaler()),
-            ('clf', LogisticRegression())]
-
-pipeline = Pipeline(pipeline_dict)
-
-pipeline.fit(X, y)
-
-# save model for deployment
-dump(pipeline, 'iris_v1.joblib')
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 ```
 
+Again, we just repeat the four steps:
 
-Note that this model is very simple...e.g., no scaling/splitting/gridsearch.  This is intended so we can quickly jump to deployment...
+    heroku login
+    heroku container:login
+    heroku container:push web -a [app-name]
+    heroku container:release web -a [app-name]    
 
-### 3. Define a placeholder classifier
+Go to 
 
-Let's create a placeholder variable to hold the model, when we load, so we can reuse.
+    http://[app-name].herokuapp.com   
 
-Create a `classifier.py` under the `ml` folder with the following code:
+You will see the changes.
 
-```python
-clf = None
-```
+### Continuous integration with Github action
 
-### 4. Define the schema
+Now, this process can be automated, which is called **continuous integration** or **CI/CD**.  The idea is that whenever we push the code, it must run certain steps for us, such as test and deploy procedure for us.  There are two popular CI/CD frameworks which are **Jenkin** and **Github action**.  Since **Github action** has received a lot of interest lately, we shall explore it.
 
-FastAPI has an automatic data validation, if we provide it with the `BaseModel` definition.
 
-Create a directory `schema`, and create `iris.py` inside with the following code.
+github action
 
-```python
-from pydantic import BaseModel, conlist
-from typing import List
+https://github.com/marketplace/actions/deploy-to-heroku
 
-# Without this file won't break your app, but it's good practice
 
-#basically create a schema describing Iris
-#mainly for the purpose of automatic data validation
-class Iris(BaseModel):    
-    #conlist helps imposing list with constraints
-    data: List[conlist(float, 
-                    min_items=4,
-                    max_items=4)]
-```
+    name: Deploy
 
-### 5. Define the router
+    on:
+    push:
+        branches:
+        - master
 
-Here we gonna define how url is routed.  You can see this as the *main()* file.
+    jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - uses: akhileshns/heroku-deploy@v3.12.12 #this is the action
+            with:
+            heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+            heroku_app_name: "YOUR APP's NAME" #Must be unique in Heroku
+            heroku_email: "YOUR EMAIL"
+            usedocker: true #<- Deploy with docker :-)
+            appdir: "api" # <- This will point to the subdirectroy folder in your project
 
-Create `app.py` in the root level.  In this script, we define the app and specify the router(s).
 
-```python
-#our classifier
-import ml.classifier as clf
-from fastapi import FastAPI, Body
-from joblib import load
 
-#Iris data structure
-from schema.iris import Iris
 
-#define the fastapi
-app = FastAPI(title="Iris Prediction API",
-            description="API for Iris Prediction",
-            version="1.0")
 
-#when the app start, load the model
-@app.on_event('startup')
-async def load_model():
-    clf.model = load('ml/iris_v1.joblib')
-    
-#when post event happens to /predict
-@app.post('/predict')
-async def get_prediction(iris:Iris):
-    data = dict(iris)['data']
-    prediction = clf.model.predict(data).tolist()
-    proba = clf.model.predict_proba(data).tolist() 
-    return  {"prediction": prediction,
-            "probability": proba}
-```
 
-### 6. Try run the uvicorn server to see how the API is
 
-We are actually done with the API.  Yes!  It's that simple.
 
-Run the server by:
-
-    uvicorn app:app --port 5000
-
-Go to `http://127.0.0.1:5000/docs`.  Then try input some values and see the response by clicking **Try it out**.
-
-You can also try only three values, and see the errors.
-
-![swagger UI](swagger.png)
-
-
-### 7. Include Dependencies
-
-Let's prepare ourselve containerize our app.  But before that, let's create a file containing all our dependencies.
-
-At root, create a `requirements.txt` file to specify all of the dependencies required to build this app.
-
-My requirements.txt looks like this:
-
-    fastapi==0.78.0
-    numpy==1.23.1
-    scikit_learn==0.24.2
-    starlette==0.19.1
-    uvicorn==0.18.2
-    joblib==0.17.0
-    pydantic==1.9.1
-
-If you don't know which version you are using, try `pip list`.
-
-### 8. Dockerfile
-
-We also need to create a Dockerfile which will contain the commands required to assemble the image. Once deployed, other applications will be able to consume from our iris classifier to make cool inferences about flowers.
-
-```dockerfile
-FROM python:3.8-slim-buster
-
-RUN apt-get update && apt-get install -y python3-dev build-essential
-
-WORKDIR /app
-
-COPY requirements.txt .
-RUN pip3 install -r requirements.txt
-
-COPY . .
-
-EXPOSE 5000
-
-CMD ["uvicorn", "--host", "0.0.0.0", "--port", "5000", "iris.app:app"]
-```
-
-The first line defines the Docker base image for our application. The `python:3.8-slim-buster` is a popular image — it’s lightweight and very quick to build. 
-
-Our Dockerfile concludes with a `CMD` which is used to set the default command to `uvicorn --host 0.0.0.0 --port 5000 iris.app:app`. The default command is executed when we run the container.
-
-If you don't understand very well, don't worry!  There are many online materials how to make Dockerfile. :-)
-
-### 9. Build and run the container
-
-We are almost there!!
-
-Build the docker image using 
-
-    docker build . -t iris
-
-This step takes a while to finish.
-
-Check whether you have successfully build the image
-
-    docker images
-
-*Note: If you make any mistake, simply* `docker rmi [image_id]`*, and do the build again*.
-
-After the image is built, generate the docker container using 
-
-    docker run --name iris -p 8080:5000 iris
-
-Check whether your image is running
-
-    docker ps -a
-
-*Note: If you want to stop, do* `docker stop [image_id]`*; if you want to remove the container, do* `docker rm [image_id]`*.  Do these until you are satisfied :-)*
-
-This exposes the application to the port 8080. Running the container also kicks off the default command we set earlier — which effectively starts up the app!
-
-### 10. Use the API
-
-So let's try our API.
-
-First, I have to check my docker-machine ip by doing
-
-    docker-machine ip default
-
-Here, my ip is 192.168.99.100
-
-Go to `192.168.99.100:8080/docs`.  Now you can do the same thing.
-
-### Congrats!!
-
-In the next lab, let's deploy to **Heroku**, so everyone in the world can use your API.  Also let's try setup **CI/CD with github actions**.
-
-#### References
-
-- https://towardsdatascience.com/deploying-iris-classifications-with-fastapi-and-docker-7c9b83fdec3a
-- https://medium.com/analytics-vidhya/serve-a-machine-learning-model-using-sklearn-fastapi-and-docker-85aabf96729b
