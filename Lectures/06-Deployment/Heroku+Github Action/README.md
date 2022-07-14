@@ -2,6 +2,10 @@
 
 Let's deploy our app online.  We gonna use **Heroku** which is free but also support paid version.
 
+### Pre-requisites
+
+Make sure you have a completely separate repository holding the app that we did last time.
+
 ### Install heroku cli 
 (You can do it in any directory)
 
@@ -119,29 +123,36 @@ Inside this, we shall define our github action, i.e., everything we commit and p
 ```yml
 name: Deploy
 
-on:
-push:
-    branches:
-    - master
+on: push
 
 jobs:
-build:
+  build:  # any name is ok for this line
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: akhileshns/heroku-deploy@v3.12.12 #this is the action
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12 # this is the action
         with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-        heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
-        heroku_email: ${{ secrets.HEROKU_EMAIL }}
-        usedocker: true #<- Deploy with docker :-)
-        appdir: "06-Deployment/FastAPI+Docker" # <- This will point to the subdirectroy folder in your project
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}} #must be set in github > settings > secrets
+          heroku_app_name: "iris-ait" #must exist
+          heroku_email: "chaklam072@gmail.com"
+          justlogin: true
+      - run: |
+          heroku container:login
+          heroku container:push web -a iris-ait  
+          heroku container:release web -a iris-ait
+
+     #please change iris-ait to your app name
 ```
 
-Go to your github repository, go to `Settings > Secrets`, set three variables `HEROKU_API_KEY`, `HEROKU_APP_NAME`, `HEROKU_EMAIL`.
+Go to your github repository, go to `Settings > Secrets`, set `HEROKU_API_KEY`.
+
+![secrets](secrets.png)
 
 
-For the api key, use `heroku authorizations:create` for production apps, use `heroku auth:token` for development (you can do this anywhere in the terminal).
+For the api key, run `heroku authorizations:create` for production apps, use `heroku auth:token` for development (you can do this anywhere in the terminal).
+
+![auth](auth.png)
+
 
 If you want to further tweak, see https://github.com/marketplace/actions/deploy-to-heroku
 
@@ -153,7 +164,11 @@ async def root():
     return {"message": "We change something"}
 ```
 
-Then you can push and commit as usual.  
+Then you can push and commit as usual.
+
+You can check whether your `main.yml` is working by going to your github > actions.
+
+![actions](actions.png)
 
 Then try to go to `http://[app-name].herokuapp.com` to see the change.
 
