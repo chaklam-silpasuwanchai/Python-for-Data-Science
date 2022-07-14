@@ -11,7 +11,7 @@ Here is the separate repository of mine:
 https://github.com/chaklam-silpasuwanchai/iris-heroku-example
 
 
-### Install heroku cli 
+### 1. Install heroku cli 
 (You can do it in any directory)
 
     brew tap heroku/brew && brew install heroku
@@ -20,7 +20,7 @@ If you are using other os, please refer to
 
 https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli
 
-### Login 
+### 2. Login 
 
 Login to your heroku
 
@@ -29,7 +29,7 @@ Login to your heroku
     heroku login
     heroku container:login
 
-### Create heroku app
+### 3. Create heroku app
 
 (You can do it in any directory; app name can be anything)
 
@@ -39,7 +39,7 @@ To check that you have really created the app, you can go to heroku website and 
 
 ![app](app.png)
 
-### Push and deploy
+### 4. Push and deploy
 
 Before we do anything, we have to revise the port variable in `Dockerfile`.  This is because heroku has its own port.
 
@@ -84,7 +84,7 @@ If you want to change the domain name, just simply purchase a domain name and li
 
 (Note: if your app is not running, check the logs:  `heroku logs -a [app-name]`)
 
-### Changing app
+### 5. Changing app
 
 Now let's try add something in the `app.py` and see whether the changes propagate
 
@@ -105,7 +105,7 @@ Go to
 
 You will see the changes.
 
-### Continuous integration with Github action
+### 6. Continuous integration with Github action
 
 Now, this process can be automated, which is called **continuous integration** or **CI/CD**.  The idea is that whenever we push the code, it must run certain steps for us, such as test and deploy procedure for us.  There are two popular CI/CD frameworks which are **Jenkin** and **Github action**.  Since **Github action** has received a lot of interest lately, we shall explore it.
 
