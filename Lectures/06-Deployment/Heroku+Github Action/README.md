@@ -100,7 +100,7 @@ You will see the changes.
 
 Now, this process can be automated, which is called **continuous integration** or **CI/CD**.  The idea is that whenever we push the code, it must run certain steps for us, such as test and deploy procedure for us.  There are two popular CI/CD frameworks which are **Jenkin** and **Github action**.  Since **Github action** has received a lot of interest lately, we shall explore it.
 
-First, create a directory `.github` on the root level (at the same level as the Dockerfile)  (Note that the name cannot change because github action looks for this folder)
+First, create a directory `.github` on the root level (at the same level as the root level of the repository)  (Note that the name cannot change because github action looks for this folder)
 
     mkdir .github
 
