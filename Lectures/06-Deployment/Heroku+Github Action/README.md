@@ -8,8 +8,7 @@ Make sure you have a completely separate repository holding the app that we did 
 
 Here is the separate repository of mine:
 
-https://github.com/chaklam-silpasuwanchai/iris-heroku-example
-
+https://github.com/chaklam-silpasuwanchai/Fastapi-Docker-Heroku-Githubaction-Iris
 
 ### 1. Install heroku cli 
 (You can do it in any directory)

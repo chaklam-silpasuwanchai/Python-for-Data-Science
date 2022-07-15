@@ -46,7 +46,6 @@ Focus on getting started.
 
 ### 3. Deep Learning
 
-#### 3.1 PyTorch
   - Linear Regression
   - Logistic Regression
   - Convolutional Neural Network
