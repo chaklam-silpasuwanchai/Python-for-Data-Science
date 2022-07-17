@@ -77,3 +77,8 @@ data
 # Pipenv
 .venv
 Pipfile.lock
+
+# 05 - Signal Processing for EEG
+Lectures/05-Signal Processing for EEG/dataset/*
+
+!.keep
