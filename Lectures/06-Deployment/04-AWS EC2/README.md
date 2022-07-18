@@ -158,4 +158,8 @@ Recall your address of your AWS instance.  Go to that address, and you will see 
 
 ### Congrats!!  What's next?
 
-I haven't go back to reconfigure the github actions.  Try reconfigure so that everytime we commit, it changes  for us :-).  Good luck!
+Try reconfigure so that everytime we commit, it changes  for us :-).  
+
+For your reference, look at the new `.github/workflows/main.yml` at `https://github.com/chaklam-silpasuwanchai/Deploy-ML-Production` for some hints how to do so.
+
+Good luck!
