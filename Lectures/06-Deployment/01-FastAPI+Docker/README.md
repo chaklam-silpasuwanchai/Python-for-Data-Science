@@ -1,4 +1,16 @@
-## Deployment: Fast API + Docker
+# Deploying machine learning model to production
+
+Out there, it is very difficult to find one tutorial covering the whole process.  Thus, in this tutorial, you will be learning of making a full stack of machine learning applications consisting of the following tools.  But please be reminded that learning tools are not as important as learning the process and the philosophy behind.
+
+- FastAPI
+- Docker
+- Heroku
+- Github actions
+- Prometheus
+- Grafana
+- AWS EC2
+
+## Part 1: Fast API + Docker
 
 Once we developed our ML model, we have to make it accessible by the public or at least the applications that require the prediction results.
 
@@ -12,7 +24,8 @@ So let's get started.
 
 ### Prerequisites
 
-- Install Docker
+- Install Docker Desktop for Mac/Windows or Docker CLI for Linux
+  - Supports latest `docker compose` not `docker-compose`
 - Install FastAPI (pip install fastapi)
 - Install uvicorn (pip install uvicorn)
 
@@ -29,7 +42,7 @@ FastAPI is the most popular go-to framework for building robust and high-perform
 - FastAPI + uvicorn is one of the fastest
 - Unlike Django or Flask, it supports asynchronous requests
 - Does not come with a view component;  often used together with React/Vue/Angular/HTML for frontend
-- Allows data validation(e.g., maximum length, type)
+- Allows data validation (e.g., maximum length, type)
 - Supports error messages
 - Default UI like Postman
 
@@ -161,13 +174,15 @@ We are actually done with the API.  Yes!  It's that simple.
 
 Run the server by:
 
-    uvicorn app:app --port 5000
+```shell
+uvicorn app:app --port 5000
+```
 
 Go to `http://127.0.0.1:5000/docs`.  Then try input some values and see the response by clicking **Try it out**.
 
 You can also try only three values, and see the errors.
 
-![swagger UI](swagger.png)
+![swagger UI](figures/swagger.png)
 
 
 ### 7. Include Dependencies
@@ -221,39 +236,43 @@ We are almost there!!
 
 Build the docker image using 
 
-    docker build . -t iris
+```shell
+docker build . -t iris
+```
 
 This step takes a while to finish.
 
 Check whether you have successfully build the image
 
-    docker images
+```shell
+docker images
+```
 
 *Note: If you make any mistake, simply* `docker rmi [image_id]`*, and do the build again*.
 
 After the image is built, generate the docker container using 
 
-    docker run --name iris -p 8080:5000 iris
+```shell
+docker run --name iris -p 8000:5000 iris
+```
 
 Check whether your image is running
 
-    docker ps -a
+```shell
+docker ps -a
+```
 
 *Note: If you want to stop, do* `docker stop [image_id]`*; if you want to remove the container, do* `docker rm [image_id]`*.  Do these until you are satisfied :-)*
 
-This exposes the application to the port 8080. Running the container also kicks off the default command we set earlier — which effectively starts up the app!
+This exposes the application to the port 8000. Running the container also kicks off the default command we set earlier — which effectively starts up the app!
 
 ### 10. Use the API
 
 So let's try our API.
 
-First, I have to check my docker-machine ip by doing
+Go to `localhost:8000/docs`.  Now you can do the same thing.
 
-    docker-machine ip default
-
-Here, my ip is 192.168.99.100
-
-Go to `192.168.99.100:8080/docs`.  Now you can do the same thing.
+Note: if you are using docker machine, replace localhost with the IP address you found in `docker machine ip`
 
 ### Congrats!!
 

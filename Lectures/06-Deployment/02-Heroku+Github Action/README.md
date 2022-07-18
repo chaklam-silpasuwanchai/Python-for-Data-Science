@@ -1,4 +1,4 @@
-## Deployment: Heroku + Github Action
+## Part 2: Heroku + Github Action
 
 Let's deploy our app online.  We gonna use **Heroku** which is free but also support paid version.
 
@@ -8,12 +8,14 @@ Make sure you have a completely separate repository holding the app that we did 
 
 Here is the separate repository of mine:
 
-https://github.com/chaklam-silpasuwanchai/Fastapi-Docker-Heroku-Githubaction-Iris
+https://github.com/chaklam-silpasuwanchai/Deploy-ML-Production
 
 ### 1. Install heroku cli 
 (You can do it in any directory)
 
-    brew tap heroku/brew && brew install heroku
+```shell
+brew tap heroku/brew && brew install heroku
+```
 
 If you are using other os, please refer to 
 
@@ -25,18 +27,22 @@ Login to your heroku
 
 (You can do it in any directory)
 
-    heroku login
-    heroku container:login
+```shell
+heroku login
+heroku container:login
+```
 
 ### 3. Create heroku app
 
 (You can do it in any directory; app name can be anything)
 
-    heroku create [app-name]
+```shell
+heroku create [app-name]
+```
 
 To check that you have really created the app, you can go to heroku website and check.
 
-![app](app.png)
+![app](figures/app.png)
 
 ### 4. Push and deploy
 
@@ -44,7 +50,9 @@ Before we do anything, we have to revise the port variable in `Dockerfile`.  Thi
 
 You can check the PORT variable via
 
-    heroku run printenv -a [app-name]
+```shell
+heroku run printenv -a [app-name]
+```
 
 Revise your `Dockerfile` to:
 
@@ -67,13 +75,17 @@ CMD uvicorn --host 0.0.0.0 --port $PORT app:app
 
 Now, let's push to heroku container register.  Go to the level where the Dockerfile is:
 
-    heroku container:push web -a [app-name]
+```shell
+heroku container:push web -a [app-name]
+```
 
 (Note:  The first time I did this, it freezes.  Not sure why, but once I restarted my mac, it works fine.)
 
 Then let's release to the public
 
-    heroku container:release web -a [app-name]    
+```shell
+heroku container:release web -a [app-name]  
+```
 
 Now go to 
 
@@ -95,8 +107,10 @@ async def root():
 
 Again, we just repeat the two steps:
 
-    heroku container:push web -a [app-name]
-    heroku container:release web -a [app-name]    
+```shell
+heroku container:push web -a [app-name]
+heroku container:release web -a [app-name]  
+```
 
 Go to 
 
@@ -110,17 +124,23 @@ Now, this process can be automated, which is called **continuous integration** o
 
 First, create a directory `.github` on the root level (at the same level as the root level of the repository)  (Note that the name cannot change because github action looks for this folder)
 
-    mkdir .github
+```shell
+mkdir .github
+```
 
 Then inside .github, create a directory called `workflows`
 
-    cd .github
-    mkdir workflows
+```shell
+cd .github
+mkdir workflows
+```
 
 Inside the workflows, create the `main.yml` file
 
-    cd workflows
-    touch main.yml
+```shell
+cd workflows
+touch main.yml
+```
 
 Inside this, we shall define our github action, i.e., everytime we commit and push new code, it should help us automatically deploy to heroku.  The code is:
 
@@ -150,12 +170,12 @@ jobs:
 
 Go to your github repository, go to `Settings > Secrets`, set `HEROKU_API_KEY`.
 
-![secrets](secrets.png)
+![secrets](figures/secrets.png)
 
 
 For the api key, run `heroku authorizations:create` for production apps, use `heroku auth:token` for development (you can do this anywhere in the terminal).
 
-![auth](auth.png)
+![auth](figures/auth.png)
 
 
 If you want to further tweak, see https://github.com/marketplace/actions/deploy-to-heroku
@@ -172,7 +192,7 @@ Then you can push and commit as usual.
 
 You can check whether your `main.yml` is working by going to your github > actions.
 
-![actions](actions.png)
+![actions](figures/actions.png)
 
 Then try to go to `http://[app-name].herokuapp.com` to see the change.
 
