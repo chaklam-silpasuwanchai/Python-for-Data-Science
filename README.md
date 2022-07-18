@@ -55,4 +55,4 @@ Focus on getting started.
   - FastAPI + Docker
   - Heroku + Github Action
   - Prometheus + Graphana
-  - Wandb
+  - AWS EC2
