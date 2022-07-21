@@ -1,0 +1,8 @@
+#shared config contains all configurations that are kept constant across all experiments
+
+#make sure these are constant across conditions
+n_epochs: 2
+batch_size_train: 10
+batch_size_test: 1000
+learning_rate: 0.001
+momentum: 0.5

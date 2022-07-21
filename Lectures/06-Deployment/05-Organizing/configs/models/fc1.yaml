@@ -1,0 +1,6 @@
+FC:
+  input_size: 784
+  hidden_size: 89
+  num_classes: 10
+
+bool_reshape: 1
