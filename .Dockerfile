@@ -25,6 +25,7 @@ RUN apt install git -y
 # RUN pip install pipenv
 
 # Install library
+RUN pip3 install ipykernel
 RUN pip3 install numpy
 RUN pip3 install pandas
 RUN pip3 install matplotlib
