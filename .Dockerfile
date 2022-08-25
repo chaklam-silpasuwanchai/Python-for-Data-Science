@@ -1,7 +1,9 @@
 # A normal typical ubuntu container
-FROM ubuntu:20.04
+# FROM ubuntu:22.04
 # In case you you want to use CUDA
 # FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
+# FROM nvidia/cuda:11.7.1-devel-ubuntu20.04
+FROM nvidia/cuda:11.7.0-cudnn8-devel-ubuntu22.04
 
 # https://vsupalov.com/docker-arg-env-variable-guide/
 # https://bobcares.com/blog/debian_frontendnoninteractive-docker/
