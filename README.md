@@ -11,7 +11,7 @@ Some resource worth mentioning:
 3. Prerequisities/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
 4. Syllabus/0. Course Introduction.ipynb
-  - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.  Each lab always end with the assessment and solution.
+  - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.
   
 5. I have put many folder titled "further-study" or "exercise".  These resources are especially aimed for those who have completed the basic materials of the course, and would like to further improve your knowledge.  The only reason I could not teach is due to time constraint of the course.
   
@@ -28,7 +28,7 @@ I would also like to thank students who have contributed:
 - Pranisaa Charnparttarvanit
 - Chanapa Pananookooln
 
-The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
+The course is structured into 5 big components:
 
 ### 1. Bootcamp: Python Basics
 Focus on getting started.
