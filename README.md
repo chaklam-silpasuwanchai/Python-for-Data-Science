@@ -30,30 +30,41 @@ I would also like to thank students who have contributed:
 
 The course is structured into 3 big components, mostly focusing on preprocessing and modeling perspectives:
 
-### 1. Python Basics
+### 1. Bootcamp: Python Basics
 Focus on getting started.
-  - Python
+  - Docker
+  - Variables
+  - List
+  - Tuples, Dictionaries
+  - Functions
+  - Classes
+  - Exception
+
+### 2. Data Science
   - Numpy
   - Pandas
   - Matplotlib
   - Sklearn
   
-### 2. Traditional Machine Learning
+### 3. Machine Learning from Scratch
+- Linear Regression
+- Logistic Regression
+- Naive Bayes 
 
-- Regression
-- Classification
-- Clustering
-- Dimensionality Reduction
+### 4. Signal Processing
+- Theories and preprocessing
 
-### 3. Deep Learning
-
+### 5. Deep Learning
   - Linear Regression
   - Logistic Regression
   - Convolutional Neural Network
   - Long Short-Term Memory
   
-### 4 Deployment 
+### Appendix -  Deployment 
   - FastAPI + Docker
   - Heroku + Github Actions
   - Prometheus + Grafana
   - AWS EC2
+
+### Appendix - Organization
+  - How to organize your ML project folders
