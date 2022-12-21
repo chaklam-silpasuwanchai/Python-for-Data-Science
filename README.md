@@ -2,7 +2,7 @@
 
 This is the repository for the course Python for DSAI at Asian Institute of Technology.
 
-Some resource worth mentioning:
+### Prerequisites
 
 1. Prerequisites/0 - Reading Roadmap
   - For those who wants to know what papers to read.  I have listed ONLY the most important papers you need to read in the field of machine learning
@@ -10,12 +10,15 @@ Some resource worth mentioning:
   - For setting up tools for the course
 3. Prerequisities/0 - Course Notations
   - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
-4. Syllabus/0. Course Introduction.ipynb
-  - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.
   
-5. I have put many folder titled "further-study" or "exercise".  These resources are especially aimed for those who have completed the basic materials of the course, and would like to further improve your knowledge.  The only reason I could not teach is due to time constraint of the course.
-  
-I would also like to give credits to several githubs that I have revised to create this:
+ ### Syllabus
+ 
+Syllabus/0. Course Introduction.ipynb
+ - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.
+
+### Credits
+
+I would like to give credits to several githubs that I have revised to create this:
 
 - https://github.com/SethHWeidman/DLFS_code
 - https://github.com/jakevdp/PythonDataScienceHandbook
@@ -27,6 +30,8 @@ I would also like to thank students who have contributed:
 - Akraradet Sinsamersuk
 - Pranisaa Charnparttarvanit
 - Chanapa Pananookooln
+
+### Outline
 
 The course is structured into 5 big components:
 
