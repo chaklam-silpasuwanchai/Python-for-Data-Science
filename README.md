@@ -1,6 +1,6 @@
-# Python for DSAI
+# Python for Data Science and AI
 
-This is the repository for the course Python for DSAI at Asian Institute of Technology.
+This is the repository for the course Python for Data Science and AI at Asian Institute of Technology.
 
 ### Prerequisites
 
