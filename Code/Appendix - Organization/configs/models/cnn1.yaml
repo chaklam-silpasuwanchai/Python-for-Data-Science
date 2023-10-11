@@ -1,4 +1,0 @@
-ConvNet:
-  num_classes: 10
-
-bool_reshape: 0

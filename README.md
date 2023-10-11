@@ -1,41 +1,13 @@
 # Python for Data Science and AI
 
-This is the repository for the course Python for Data Science and AI at Asian Institute of Technology.
+This is the repository, mainly to prepare students to get acquainted with Python, before actually learning machine learning.
 
-### Prerequisites
-
-1. Prerequisites/0 - Reading Roadmap
-  - For those who wants to know what papers to read.  I have listed ONLY the most important papers you need to read in the field of machine learning
-2. Prerequisities/0 - Installation
-  - For setting up tools for the course
-3. Prerequisities/0 - Course Notations
-  - Understanding notations is the first step towards conquering math, so take a look and familiarized with it
-  
- ### Syllabus
- 
-Syllabus/0. Course Introduction.ipynb
- - Contains how I run the course.  This course is a 15 weeks course, each week having two labs of 3 hours each.
-
-### Credits
-
-I would like to give credits to several githubs that I have revised to create this:
-
-- https://github.com/SethHWeidman/DLFS_code
-- https://github.com/jakevdp/PythonDataScienceHandbook
-- Awesome datacamp on PyTorch by Jose Marcial Portilla
-- Many other awesome github heros (that I forget to reference...)
-
-I would also like to thank students who have contributed:
-
-- Akraradet Sinsamersuk
-- Pranisaa Charnparttarvanit
-- Chanapa Pananookooln
 
 ### Outline
 
-The course is structured into 5 big components:
+The repo is structured into 2 big components:
 
-### 1. Bootcamp: Python Basics
+### 1. Python Basics
 Focus on getting started.
   - Docker
   - Variables
@@ -51,25 +23,21 @@ Focus on getting started.
   - Matplotlib
   - Sklearn
   
-### 3. Machine Learning from Scratch
-- Linear Regression
-- Logistic Regression
-- Naive Bayes 
-
-### 4. Signal Processing
-- Theories and preprocessing
-
-### 5. Deep Learning
-  - Linear Regression
-  - Logistic Regression
-  - Convolutional Neural Network
-  - Long Short-Term Memory
-  
-### Appendix -  Deployment 
-  - FastAPI + Docker
-  - Heroku + Github Actions
-  - Prometheus + Grafana
-  - AWS EC2
-
-### Appendix - Organization
-  - How to organize your ML project folders
+### Reference books:
+    - [GERON] Geron, A. **Hands-On Machine Learning with Scikit-Learn and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems**, 2019 (2nd edition) (https://github.com/ageron/handson-ml2)
+    - [VANDER] VanderPlas, J. **Python Data Science Handbook: Essential Tools for Working with Data**, 2016 (1st edition) (https://jakevdp.github.io/PythonDataScienceHandbook/)
+    - [HASTIE] Hastie, T., Tibshirani, R., and Friedman, J. **The Elements of Statistical Learning: Data Mining, Inference, and Prediction**, 2016 (2nd edition) (https://web.stanford.edu/~hastie/)
+    - [WEIDMAN] Weidman, S. **Deep Learning from Scratch: Building with Python from First Principles**, 2019 (1st edition) (https://github.com/SethHWeidman/DLFS_code)
+    - [CHARU] Charu, C. **Neural Networks and Deep Learning: A Textbook**, 2018 (1st edition)
+    - [Deisenroth] Deisenroth, M.P., Faisal A.A., Ong, C.S., **Mathematics for Machine Learning**, 2020 (1st edition) (https://mml-book.github.io/book/mml-book.pdf)
+    
+### Online resources:
+    - Python tutorials available online: https://docs.python.org/3/tutorial/
+    - Jupyter notebook tutorials available online: https://ipython.org/documentation.html
+    - Numpy tutorials available online:https://numpy.org/doc/stable/
+    - Pandas tutorials available online: https://pandas.pydata.org/docs/
+    - Nltk tutorials available online: https://www.nltk.org
+    - Matplotlib tutorials available online: https://matplotlib.org/contents.html
+    - Scikit-learn tutorials available online: https://scikit-learn.org/stable/user_guide.html
+    - Pytorch tutorials available online: https://pytorch.org/tutorials/
+    - Nice visuals on CNN - https://github.com/vdumoulin/conv_arithmetic

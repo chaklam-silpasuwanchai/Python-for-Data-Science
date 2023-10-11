@@ -1,3 +1,0 @@
-#placeholder to keep the model when we did not load yet
-#lazy initialization....
-clf = None
