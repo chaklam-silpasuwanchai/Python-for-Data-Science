@@ -9,7 +9,6 @@ The repo is structured into 2 big components:
 
 ### 1. Python Basics
 Focus on getting started.
-  - Docker
   - Variables
   - List
   - Tuples, Dictionaries
