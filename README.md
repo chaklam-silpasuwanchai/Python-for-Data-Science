@@ -1,6 +1,6 @@
 # Python for Data Science and AI
 
-This is the repository, mainly to prepare students to get acquainted with Python, before actually learning machine learning.
+This is the repository, mainly to prepare students to get acquainted with Python, before actually learning machine learning.  For those who are more interested in the advanced one, go to my other repository "Machine Learning"
 
 
 ### Outline
