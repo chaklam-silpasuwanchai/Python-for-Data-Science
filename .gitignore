@@ -63,21 +63,3 @@ AkraradetSolution
 **/._.DS_Store
 
 Quiz/
-
-.data
-._.data
-**/.data
-**/._.data
-
-data
-._.data
-**/data
-**/data
-
-# Pipenv
-.venv
-Pipfile.lock
-
-# 05 - Signal Processing for EEG
-Lectures/05 - Signal Processing for EEG/dataset/*
-Lectures/me
